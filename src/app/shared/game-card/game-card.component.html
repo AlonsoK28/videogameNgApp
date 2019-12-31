@@ -1,0 +1,29 @@
+<!-- Boostrap template card https://codepen.io/cristinaconacel/pen/NOYoGX -->
+<div class="container productos-card" *ngIf="Games.length > 0">
+    <div class="row">
+        <div class="card-columns">
+            <a *ngFor="let game of Games" routerLink="/game/{{ game.slug }}" class="fade-in">    
+                <div class="card border-success">
+                    <img class="card-img"
+                        src="{{ game.background_image }}"
+                        alt="preview image of {{game.name}}">
+                    <div class="card-img-overlay d-flex justify-content-end">
+                        <a class="card-link text-danger like">
+                            <span class="badge badge-pill badge-success">{{ game.platforms[0].platform.name }}</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{game.name}}</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Released: {{ game.released }}</h6>
+                        <div class="buy d-flex justify-content-between align-items-center">
+                            <div class="price text-success">
+                                <h5 class="mt-4">Score {{game.score | percent}}</h5>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductApp, ProductAPI } from '../models/product';
+import { GameAPI, GameDetailAPI } from '../models/games';
 import { Observable, throwError, pipe } from 'rxjs';
-import { retry, catchError, map } from 'rxjs/operators';
+import { retry, catchError, map, tap } from 'rxjs/operators';
 import { httpErrorCode, httpError } from '../httpError';
-import { deprecate } from 'util';
 @Injectable({
     providedIn: 'root'
 })
 export class ProductosRestApiService {
-    apiHOST = `172.19.78.157`;
+    apiPROTOCOL = 'https://';
+    apiHOST = 'api.rawg.io/api';
     apiPORT = "8888";
-    apiURL = `//${this.apiHOST}:${this.apiPORT}/user`;
+    apiURL = `${this.apiPROTOCOL}${this.apiHOST}/games`;
     httpE: httpError;
     constructor(private http: HttpClient) { }
     // Http Options
@@ -21,6 +22,21 @@ export class ProductosRestApiService {
         })
     }
 
+    /**
+    * @autor Carlos Alonso Casales Ortega
+    */
+    getGameList(query:string):Observable<GameAPI[]>{
+        console.log(`${this.apiURL}&search=${query}&page_size=5`);
+            return this.http.get<GameAPI>(`${this.apiURL}?search=${query}&page_size=50`)
+                .pipe(   
+                    tap(console.log),
+                    map((res) => { 
+                      if ( res.results.length > 0 ){
+                        return res.results;
+                      }
+                      return 0;
+                    }));
+    }
     // HttpClient API get() method => Obtiene todos los productos
     getListadoProductos(): Observable<ProductApp[]> {
         return this.http.get<ProductAPI[]>(`${this.apiURL}/articles/`)
@@ -111,17 +127,4 @@ export class ProductosRestApiService {
         return throwError(this.httpE);
     }
 
-    private generateProductsAppArray(productObj: object): ProductApp[] {
-        const producs: ProductApp[] = [];
-
-        if ( productObj == null ){
-            return [];
-        }
-
-        Object.keys(productObj).forEach(key => {
-            const produc: ProductApp = new ProductApp(productObj[key]);
-            producs.push(produc);
-        });
-        return producs;
-    }
 }
