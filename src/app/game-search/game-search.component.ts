@@ -11,7 +11,9 @@ export class GameSearchComponent implements OnInit {
 
   Games: GameAPI[] = [];
   searchTerm:string = "";
-  searchTemplate:boolean = true;
+  searchTemplate:boolean = true;  
+  loader:boolean = true;
+  noResults:boolean = false;
 
 
   constructor(private productosRestApi: ProductosRestApiService,
@@ -19,9 +21,8 @@ export class GameSearchComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       if (params.searchTerm) {
-        console.log("searchTemplate: ", this.searchTemplate);
+        this.searchTemplate = false;
         this.searchTerm = params.searchTerm;
-        console.log("searchTerm: ", this.searchTerm);
         this.gameList();
       }
     });
@@ -32,12 +33,12 @@ export class GameSearchComponent implements OnInit {
   }
 
   searchGame(){
+    this.loader = true;
+    this.noResults = false;
     if(this.searchTerm.length == 0){
-      console.log("searchTemplate: ", this.searchTemplate);
       return;
     }else{
       this.searchTemplate = false;
-      console.log("searchTemplate: ", this.searchTemplate);
       this.gameList();
     }
   }
@@ -46,6 +47,10 @@ export class GameSearchComponent implements OnInit {
     return this.productosRestApi.getGameList(this.searchTerm).subscribe(
         data => {
           this.Games = data;
+          this.loader = false;
+          if (!data.length){
+            this.noResults = true;
+          }
         }
     );
   }
