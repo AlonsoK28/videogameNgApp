@@ -12,7 +12,7 @@ export class ProductosRestApiService {
     apiPROTOCOL = 'https://';
     apiHOST = 'api.rawg.io/api';
     apiPORT = "8888";
-    apiURL = `${this.apiPROTOCOL}${this.apiHOST}/games`;
+    apiURL = `${this.apiPROTOCOL}${this.apiHOST}`;
     httpE: httpError;
     constructor(private http: HttpClient) { }
     // Http Options
@@ -26,8 +26,7 @@ export class ProductosRestApiService {
     * @autor Carlos Alonso Casales Ortega
     */
     getGameList(query:string):Observable<GameAPI[]>{
-        console.log(`${this.apiURL}&search=${query}&page_size=5`);
-            return this.http.get<GameAPI>(`${this.apiURL}?search=${query}&page_size=50`)
+                return this.http.get<GameAPI>(`${this.apiURL}/games?search=${query}&page_size=50`)
                 .pipe(   
                     tap(console.log),
                     map((res) => { 
@@ -37,6 +36,19 @@ export class ProductosRestApiService {
                       return 0;
                     }));
     }
+
+    /**
+    * @autor Carlos Alonso Casales Ortega
+    */
+   getGameDetail(query:string):Observable<GameDetailAPI>{
+       return this.http.get<GameDetailAPI>(`${this.apiURL}/games/${query}`)
+           .pipe(
+               tap(console.log),
+               map((res) => {
+                   return res;
+               }));
+   }
+
     // HttpClient API get() method => Obtiene todos los productos
     getListadoProductos(): Observable<ProductApp[]> {
         return this.http.get<ProductAPI[]>(`${this.apiURL}/articles/`)

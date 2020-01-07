@@ -56,11 +56,11 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0"
-          (ngSubmit)="buscarProductos(buscarInput.value)">
-      <input class="form-control mr-sm-2" type="text" placeholder="Busca productos aquí" 
-             #buscarInput>
+          (ngSubmit)="searchGame(searchInput.value)">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search games here" 
+             #searchInput>
       <button class="btn btn-secondary my-2 my-sm-0" type="button"
-              (click)="buscarProductos(buscarInput.value)"><i class="fas fa-search"></i> Buscar
+              (click)="searchGame(searchInput.value)"><i class="fas fa-search"></i> Search
       </button>
     </form>
   </div>

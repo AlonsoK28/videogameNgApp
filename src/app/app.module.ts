@@ -41,6 +41,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab, faAngular } from '@fortawesome/free-brands-svg-icons';
 import { GameSearchComponent } from './game-search/game-search.component';
 import { GameCardComponent } from './shared/game-card/game-card.component';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { GameCardComponent } from './shared/game-card/game-card.component';
     WordToSlugPipe,
     SlugToWordPipe,
     GameSearchComponent,
-    GameCardComponent
+    GameCardComponent,
+    GameDetailComponent
   ],
   imports: [
     BrowserModule,

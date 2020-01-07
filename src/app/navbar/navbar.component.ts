@@ -15,12 +15,12 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  buscarProductos(termino: string){
-    if(termino.trim().length == 0){
+  searchGame(searchTerm: string){
+    if(searchTerm.trim().length == 0){
       return;
     }
     let wordToSlug = new WordToSlugPipe();
-    this.router.navigate([`busqueda/`, wordToSlug.transform(termino)]);
+    this.router.navigate([`game-search/`, wordToSlug.transform(searchTerm)]);
   }
 
   switchTheme() {

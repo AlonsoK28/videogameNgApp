@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosRestApiService } from '../services/productos-rest-api.service';
 import { GameAPI } from '../models/games';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-game-search',
   templateUrl: './game-search.component.html',
@@ -9,18 +10,40 @@ import { GameAPI } from '../models/games';
 export class GameSearchComponent implements OnInit {
 
   Games: GameAPI[] = [];
+  searchTerm:string = "";
+  searchTemplate:boolean = true;
 
 
-  constructor(private productosRestApi: ProductosRestApiService ) { 
-    this.gameList();
+  constructor(private productosRestApi: ProductosRestApiService,
+              private route: ActivatedRoute ) { 
+
+    this.route.params.subscribe(params => {
+      if (params.searchTerm) {
+        console.log("searchTemplate: ", this.searchTemplate);
+        this.searchTerm = params.searchTerm;
+        console.log("searchTerm: ", this.searchTerm);
+        this.gameList();
+      }
+    });
 
   }
 
   ngOnInit() {
   }
 
+  searchGame(){
+    if(this.searchTerm.length == 0){
+      console.log("searchTemplate: ", this.searchTemplate);
+      return;
+    }else{
+      this.searchTemplate = false;
+      console.log("searchTemplate: ", this.searchTemplate);
+      this.gameList();
+    }
+  }
+
   gameList(){
-    return this.productosRestApi.getGameList("dead space").subscribe(
+    return this.productosRestApi.getGameList(this.searchTerm).subscribe(
         data => {
           this.Games = data;
         }

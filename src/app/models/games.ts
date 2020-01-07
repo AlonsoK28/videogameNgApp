@@ -18,5 +18,11 @@ export interface GameAPI{
 }
 
 export interface GameDetailAPI{
-
+    id?: number,
+    slug: string,
+    name: string,
+    name_original: string,
+    description: string,
+    released: string,
+    background_image: string,
 }
