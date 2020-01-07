@@ -12,7 +12,7 @@ export class GameSearchComponent implements OnInit {
   Games: GameAPI[] = [];
   searchTerm:string = "";
   searchTemplate:boolean = true;  
-  loader:boolean = true;
+  loader:boolean = false;
   noResults:boolean = false;
 
 
