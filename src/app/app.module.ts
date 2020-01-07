@@ -39,7 +39,8 @@ import {  faCircleNotch,
           faShoppingBasket,
           faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
-import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image'; // <-- import it
+import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+import { GameLoaderComponent } from './game-loader/game-loader.component'; // <-- import it
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image'; // <-- im
     SlugToWordPipe,
     GameSearchComponent,
     GameCardComponent,
-    GameDetailComponent
+    GameDetailComponent,
+    GameLoaderComponent
   ],
   imports: [
     BrowserModule,
