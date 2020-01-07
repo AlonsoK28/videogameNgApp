@@ -4,20 +4,21 @@
         <div class="card-columns">
             <a *ngFor="let game of Games" routerLink="/game-detail/{{ game.slug }}" class="fade-in">    
                 <div class="card border-success">
-                    <img class="card-img"
-                        src="{{ game.background_image }}"
-                        alt="preview image of {{game.name}}">
+                    <img *ngIf="game.background_image" class="card-img" [defaultImage]="defaultImage" [lazyLoad]="game.background_image">
+                    <img *ngIf="!game.background_image" class="card-img" src="assets/image/no-image.png">
                     <div class="card-img-overlay d-flex justify-content-end">
                         <a class="card-link text-danger like">
-                            <span class="badge badge-pill badge-success">{{ game.platforms[0].platform.name }}</span>
+                            <span *ngIf="game.platforms" class="badge badge-pill badge-success">{{ game.platforms[0].platform.name }}</span>
                         </a>
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">{{game.name}}</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Released: {{ game.released }}</h6>
+                        <h6 *ngIf="!game.released" class="card-subtitle mb-2 text-muted">No release data</h6>
+                        <h6 *ngIf="game.released" class="card-subtitle mb-2 text-muted">Released: {{ game.released }}</h6>
                         <div class="buy d-flex justify-content-between align-items-center">
                             <div class="price text-success">
-                                <h5 class="mt-4">Score {{game.score * 10 | percent}}</h5>
+                                <h5 *ngIf="game.score" class="mt-4">Score {{game.score * 10 | percent}}</h5>
+                                <h5 *ngIf="!game.score" class="mt-4">No score data </h5>
                             </div>
                             <!-- <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a> -->
                         </div>

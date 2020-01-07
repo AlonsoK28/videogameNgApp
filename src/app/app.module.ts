@@ -15,33 +15,31 @@ import { LoaderComponent } from './loader/loader.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductosCardComponent } from './template/productos-card/productos-card.component';
 import { ProductoBusquedaComponent } from './producto-busqueda/producto-busqueda.component';
+import { GameSearchComponent } from './game-search/game-search.component';
+import { GameCardComponent } from './shared/game-card/game-card.component';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 import { WordToSlugPipe } from './pipes/word-to-slug.pipe';
 import { SlugToWordPipe } from './pipes/slug-to-word.pipe';
 
 //vendor
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas, 
-  faCircleNotch, 
-  faPoll, 
-  faExclamationTriangle, 
-  faAsterisk, 
-  faPlusCircle, 
-  faSearch, 
-  faTimes, 
-  faCheckCircle, 
-  faArrowCircleLeft, 
-  faInfoCircle, 
-  faBackspace, 
-  faFont, 
-  faPaperclip,
-  faShoppingBasket,
-  faStarHalfAlt, 
-  faStarHalf} from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fab, faAngular } from '@fortawesome/free-brands-svg-icons';
-import { GameSearchComponent } from './game-search/game-search.component';
-import { GameCardComponent } from './shared/game-card/game-card.component';
-import { GameDetailComponent } from './game-detail/game-detail.component';
+import {  faCircleNotch, 
+          faPoll, 
+          faExclamationTriangle, 
+          faAsterisk, 
+          faPlusCircle, 
+          faSearch, 
+          faTimes, 
+          faCheckCircle, 
+          faArrowCircleLeft, 
+          faInfoCircle, 
+          faBackspace, 
+          faFont, 
+          faPaperclip,
+          faShoppingBasket,
+          faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+import { faAngular } from '@fortawesome/free-brands-svg-icons';
+import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image'; // <-- import it
 
 @NgModule({
   declarations: [
@@ -66,7 +64,10 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    LazyLoadImageModule.forRoot({
+      preset: scrollPreset // <-- tell LazyLoadImage that you want to use scrollPreset
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

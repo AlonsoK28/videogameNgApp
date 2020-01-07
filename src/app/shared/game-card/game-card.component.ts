@@ -9,7 +9,7 @@ import { GameAPI } from 'src/app/models/games';
 export class GameCardComponent implements OnInit {
 
   @Input("games-param") Games: GameAPI;
-
+  defaultImage: string = "assets/image/placeholder.png";
   constructor() { }
 
   ngOnInit() {
