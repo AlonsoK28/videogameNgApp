@@ -19,7 +19,6 @@ export class GameSearchComponent implements OnInit {
 
   constructor(private gameRestApi: GameRestApiService,
               private route: ActivatedRoute ) { 
-
     this.route.params.subscribe(params => {
       if (params.searchTerm) {
         this.searchTemplate = false;
@@ -34,7 +33,6 @@ export class GameSearchComponent implements OnInit {
   }
 
   searchGame(){
-    this.loader = true;
     this.noResults = false;
     if(this.searchTerm.length == 0){
       return;
@@ -45,6 +43,7 @@ export class GameSearchComponent implements OnInit {
   }
 
   gameList(){
+    this.loader = true;
     return this.gameRestApi.getGameList(this.searchTerm).subscribe(
         data => {
           this.Games = data;

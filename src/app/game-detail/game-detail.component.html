@@ -1,39 +1,45 @@
-<section class="jumbotron" [ngStyle]="backgroudImage" *ngIf="!notFound && !loader">
+<div class="jumbotron" [ngStyle]="backgroudImage" *ngIf="!notFound && !loader">
     <div class="container">
         <div class="row text-center">
-            <h2 class="title-label">{{Game.name}} <span *ngIf="Game.publishers" class="subtitle-label">by {{Game.publishers[0].name}}</span></h2>
+            <h2 class="title-label">{{Game.name}} <span *ngIf="Game.publishers[0]" class="subtitle-label">by {{Game.publishers[0]?.name}}</span></h2>
         </div>
     </div>
-</section>
+</div>
+
 <!-- Boostrap detail https://bootsnipp.com/snippets/orOGB -->
 <div class="container mb-4" *ngIf="!notFound && !loader">
-    <div class="card fade-in">
+    <div class="card fade-in pb-4">
         <div class="row">
-            <aside class="col-sm-5 border-right">
+            <aside class="col-sm-5 border-right pl-1">
                 <article class="gallery-wrap">
                     <!-- {{Game | json}} -->
                     <div class="img-big-wrap pl-3 pt-3">
-                        <img *ngIf="Game.background_image" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image" class="img-fluid item-gallery">
-                        <img *ngIf="!Game.background_image" src="{{defaultImage}}" class="img-fluid item-gallery">
+                        <p class="text-center">Image <fa-icon [icon]="['fas', 'image']"></fa-icon></p>
+                        <img *ngIf="Game.background_image" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image" class="img-fluid item-gallery mx-auto d-block">
+                        <img *ngIf="!Game.background_image" src="{{defaultImage}}" class="img-fluid item-gallery mx-auto d-block">
                     </div>
                     <div class="img-small-wrap pl-3 pt-3">
-                        <img *ngIf="Game.background_image_additional" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image_additional" class="img-fluid item-gallery">
+                        <img *ngIf="Game.background_image_additional" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image_additional" class="img-fluid item-gallery mx-auto d-block">
                     </div> 
-                    <div class="img-small-wrap pl-3 pt-3">
-                        <video *ngIf="Game.clip" src="{{Game.clip.clip}}" class="embed-responsive"></video>
+                    <div *ngIf="Game.clip" class="img-small-wrap pl-3 pt-3">
+                        <p class="text-center">Video clip <fa-icon [icon]="['fab', 'youtube']"></fa-icon></p>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" [src]="Game.clip.clip | domSanitizer:'Game.clip.clip'"
+                                allowfullscreen></iframe>
+                        </div>
                     </div> 
                 </article>
             </aside>
-            <aside class="col-sm-7">
+            <aside class="col-sm-7 pr-1">
                 <article class="card-body p-5">
                     <h1 class="title mb-3 game-title">{{Game.name}}</h1>
                     <p class="price-detail-wrap">
-                        <span class="price h3 text-warning">
+                        <span class="price h3 text-warning align-middle">
                             <span *ngFor="let platform of Game.platforms; index as i;" class="currency">{{platform.platform.name}} <span *ngIf="i != Game.platforms.length - 1"> - </span></span>
                         </span>
-                        <span *ngIf="Game.esrb_rating" class="pl-1"><span class="badge badge-dark">{{Game.esrb_rating.name}}</span></span>
+                        <span *ngIf="Game.esrb_rating" class="pl-1"><span class="badge badge-dark">{{Game.esrb_rating.name}} <fa-icon [icon]="['fas', 'user']"></fa-icon></span></span>
                     </p>
-                    <dl *ngIf="Game.ratings" class="param param-feature">
+                    <dl *ngIf="Game.ratings[0]" class="param param-feature">
                         <h4>Reactions <fa-icon [icon]="['fas', 'grin-tongue-wink']"></fa-icon>
                         </h4>
                         <dd>
@@ -50,14 +56,19 @@
                     <dl class="item-property">
                         <h4>Description <fa-icon [icon]="['fas', 'info-circle']"></fa-icon></h4>
                         <dd>
-                            <section>{{Game.description | htmlToText}}</section>
+                            <section class="description-elipsis">{{Game.description_raw | htmlToText}}</section>
                         </dd>
                     </dl>
+                    <hr>
+                    <dl *ngIf="Game.stores[0]">
+                        <h4>Buy now <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></h4>
+                        <a *ngFor="let store of Game.stores" href="{{store.url}}" target="_blank"><button type="button" class="btn btn-primary mr-1">{{store.store.name}} <fa-icon [icon]="['fab', 'playstation']"></fa-icon></button></a>
+                    </dl>
+                    <hr>
                     <dl *ngIf="Game.genres">
-                        <h4>Genres</h4>
-                        <button *ngFor="let genre of Game.genres" type="button" class="btn btn-outline-info" data-toggle="tooltip"
-                            data-placement="top" title="" data-original-title="Tooltip on top">{{genre.name}}</button><span
-                            class="divider pl-1 pr-1"></span>
+                        <h4>Genres <fa-icon [icon]="['fas', 'gamepad']"></fa-icon></h4>
+                        <button *ngFor="let genre of Game.genres" type="button" class="btn btn-outline-info mr-1" data-toggle="tooltip"
+                            data-placement="top" title="" data-original-title="Tooltip on top">{{genre.name}}</button>
                     </dl>
                     <dl *ngIf="Game.released" class="param param-feature">
                         <h4>Released <fa-icon [icon]="['fas', 'calendar-alt']"></fa-icon></h4>

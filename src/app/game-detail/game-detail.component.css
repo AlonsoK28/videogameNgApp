@@ -7,7 +7,7 @@
 }
 
 .title-label {
-  background-color: #FFFFFF;
+  background-color: var(--light);
   display: inline-block;
   color: #F06529;
   font-weight: 700;
@@ -15,17 +15,26 @@
   border-radius: 5px;
 }
 .subtitle-label {
-  background-color: #FFFFFF;
+  background-color: var(--light);
   display: inline-block;
   color: #F06529;
   font-weight: 100;
 }
 
 .jumbotron h3 {
-  color: #FFFFFF;
+  color: var(--light);
   font-weight: bold;
 }
 
 .game-title{
     font-weight: 600;
+}
+
+.description-elipsis{
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 15;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

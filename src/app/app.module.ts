@@ -44,9 +44,18 @@ import {  faCircleNotch,
           faStarHalfAlt,
           faExternalLinkAlt,
           faCalendarAlt,
-          faGrinTongueWink } from '@fortawesome/free-solid-svg-icons';
-import { faAngular } from '@fortawesome/free-brands-svg-icons';
+          faGrinTongueWink,
+          faImage,
+          faUser, 
+          faGamepad, 
+          faHeart, 
+          faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import {  faAngular,
+          faYoutube,
+          faXbox,
+          faPlaystation } from '@fortawesome/free-brands-svg-icons';
 import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
 
 @NgModule({
   declarations: [
@@ -65,7 +74,8 @@ import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
     GameCardComponent,
     GameDetailComponent,
     GameLoaderComponent,
-    HtmlToTextPipe
+    HtmlToTextPipe,
+    DomSanitizerPipe
   ],
   imports: [
     BrowserModule,
@@ -101,6 +111,14 @@ export class AppModule {
       faStarHalfAlt,
       faExternalLinkAlt,
       faCalendarAlt,
-      faGrinTongueWink );  
+      faGrinTongueWink,
+      faYoutube,
+      faImage,
+      faUser,
+      faGamepad,
+      faHeart,
+      faShoppingCart,
+      faXbox,
+      faPlaystation );  
   }
 }
