@@ -1,3 +1,4 @@
+<div class="top"></div>
 <div class="container fade-in">
     <div class="row">
         <div class="col-md-12 pl-1 pr-1">
@@ -6,9 +7,9 @@
                     <div class="form-group">
                         <div class="input-group mb-3">
                             <input [ngModel]="searchTerm | slugToWord" (ngModelChange)="searchTerm = $event" name="searchTerm"
-                                    type="text" class="form-control" id="search" aria-describedby="search games here"
-                                    placeholder="Search here 🧐" autocomplete="off" (keyup.enter)="searchGame()">
-                            <div class="input-group-append boton-busqueda" (click)="searchGame()">
+                                    type="text" class="form-control" id="search" aria-describedby="Enter your games here 🧐"
+                                    placeholder="Enter your games here 🧐" autocomplete="off" (keyup.enter)="searchGame()">
+                            <div class="input-group-append hand-cursor" (click)="searchGame()">
                                 <span class="input-group-text">
                                     Search
                                     <span class="icon-search ml-1">
@@ -20,11 +21,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 text-center" *ngIf="!searchTemplate">
+            <!-- <div class="col-md-12 text-center" *ngIf="!searchTemplate">
                 <h3 class="fade-in">
                     Your search: <span style="font-weight: 600;">{{searchTerm}}</span>
                 </h3>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

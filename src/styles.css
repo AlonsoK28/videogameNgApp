@@ -74,3 +74,11 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.hand-cursor{
+  cursor: pointer;
+}
+
+.top{
+  margin-bottom: 30px;
+}
