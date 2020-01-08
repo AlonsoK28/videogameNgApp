@@ -5,7 +5,7 @@
             <a *ngFor="let game of Games" routerLink="/game-detail/{{ game.slug }}" class="fade-in">    
                 <div class="card border-success">
                     <img *ngIf="game.background_image" class="card-img" [defaultImage]="defaultImage" [lazyLoad]="game.background_image">
-                    <img *ngIf="!game.background_image" class="card-img" src="assets/image/no-image.png">
+                    <img *ngIf="!game.background_image" class="card-img" src="{{noImage}}">
                     <div class="card-img-overlay d-flex justify-content-end">
                         <a class="card-link text-danger like">
                             <span *ngIf="game.platforms" class="badge badge-pill badge-success">{{ game.platforms[0].platform.name }}</span>
