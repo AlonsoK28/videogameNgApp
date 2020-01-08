@@ -9,7 +9,9 @@ export class GameLoaderComponent implements OnInit {
 
   @Input("loader-param") loader: boolean;
   @Input("noResults-param") noResults: boolean;
-  
+  @Input("httpErrorCode-param") httpErrorCode: number;
+  @Input("httpErrorMessage-param") httpErrorMessage: string;
+
   constructor() { }
 
   ngOnInit() {

@@ -6,19 +6,19 @@ export interface httpError {
 export const httpErrorCode = {
     0: {
         code: 0,
-        message: 'No hay conexión con el proveedor del servicio'
+        message: 'There is no connection with the service provider'
     },
     404: {
         code: 404,
-        message: 'El producto no fue encontrado'
+        message: 'No results found'
     },
     409: {
         code: 409,
-        message: 'Este producto ya fue registrado'
+        message: 'Item already registred'
     },
     500: {
         code: 500,
-        message: 'Error interno del servidor'
+        message: 'Error internal server'
     },
     
 }

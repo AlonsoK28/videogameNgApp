@@ -30,32 +30,39 @@ export class ProductosRestApiService {
                 .pipe(   
                     tap(console.log),
                     map((res) => { 
-                      if ( res.results.length > 0 ){
-                        return res.results;
-                      }
-                      return 0;
-                    }));
+                        if ( res.results.length > 0 ){
+                            return res.results;
+                        }
+                        return 0;
+                    }),
+                    retry(1),
+                    catchError(this.handleError))
+                ;
     }
 
     /**
     * @autor Carlos Alonso Casales Ortega
     */
-   getGameDetail(query:string):Observable<GameDetailAPI>{
-       return this.http.get<GameDetailAPI>(`${this.apiURL}/games/${query}`)
+   getGameDetail(slug:string):Observable<GameDetailAPI>{
+       return this.http.get<GameDetailAPI>(`${this.apiURL}/games/${slug}`)
            .pipe(
-               tap(console.log),
-               map((res) => {
-                   return res;
-               }));
+                    tap(console.log),
+                    map((res:GameDetailAPI) => {
+                        return res;
+                    }),
+                    retry(1),
+                    catchError(this.handleError)
+                );
    }
 
     // HttpClient API get() method => Obtiene todos los productos
     getListadoProductos(): Observable<ProductApp[]> {
         return this.http.get<ProductAPI[]>(`${this.apiURL}/articles/`)
                     .pipe(
-                        map((products: ProductAPI[]) => products.map( (product:ProductAPI) => new ProductApp(product) )),
-                        retry(1),
-                        catchError(this.handleError))
+                            map((products: ProductAPI[]) => products.map( (product:ProductAPI) => new ProductApp(product) )),
+                            retry(1),
+                            catchError(this.handleError)
+                        );
     }
 
     // HttpClient API get() method => Obtiene un producto por slug (slug generado a partir del titulo de producto)
