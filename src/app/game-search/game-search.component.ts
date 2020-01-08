@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductosRestApiService } from '../services/productos-rest-api.service';
 import { GameAPI } from '../models/games';
 import { ActivatedRoute } from '@angular/router';
+import { GameRestApiService } from '../services/game-rest-api.service';
 @Component({
   selector: 'app-game-search',
   templateUrl: './game-search.component.html',
@@ -16,7 +17,7 @@ export class GameSearchComponent implements OnInit {
   noResults:boolean = false;
 
 
-  constructor(private productosRestApi: ProductosRestApiService,
+  constructor(private gameRestApi: GameRestApiService,
               private route: ActivatedRoute ) { 
 
     this.route.params.subscribe(params => {
@@ -44,7 +45,7 @@ export class GameSearchComponent implements OnInit {
   }
 
   gameList(){
-    return this.productosRestApi.getGameList(this.searchTerm).subscribe(
+    return this.gameRestApi.getGameList(this.searchTerm).subscribe(
         data => {
           this.Games = data;
           this.loader = false;
