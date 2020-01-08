@@ -3,6 +3,7 @@ import { ProductosRestApiService } from '../services/productos-rest-api.service'
 import { ActivatedRoute } from '@angular/router';
 import { GameDetailAPI } from '../models/games';
 import { httpError } from '../httpError';
+import { GameRestApiService } from '../services/game-rest-api.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -20,7 +21,7 @@ export class GameDetailComponent implements OnInit {
   httpErrorMessage: string;
   backgroudImage:object;
 
-  constructor(private productosRestApi: ProductosRestApiService,
+  constructor(private gameRestApi: GameRestApiService,
               private route: ActivatedRoute ) { 
     this.route.params.subscribe(params => {
       if (params.slug) {
@@ -36,7 +37,7 @@ export class GameDetailComponent implements OnInit {
   }
 
   gameDetail(){
-    return this.productosRestApi.getGameDetail(this.slug).subscribe(
+    return this.gameRestApi.getGameDetail(this.slug).subscribe(
       //next  
       data => {
         this.Game = data;

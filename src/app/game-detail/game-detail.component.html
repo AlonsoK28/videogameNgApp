@@ -19,6 +19,9 @@
                     <div class="img-small-wrap pl-3 pt-3">
                         <img *ngIf="Game.background_image_additional" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image_additional" class="img-fluid item-gallery">
                     </div> 
+                    <div class="img-small-wrap pl-3 pt-3">
+                        <video *ngIf="Game.clip" src="{{Game.clip.clip}}" class="embed-responsive"></video>
+                    </div> 
                 </article>
             </aside>
             <aside class="col-sm-7">
@@ -27,22 +30,21 @@
                     <p class="price-detail-wrap">
                         <span class="price h3 text-warning">
                             <span *ngFor="let platform of Game.platforms; index as i;" class="currency">{{platform.platform.name}} <span *ngIf="i != Game.platforms.length - 1"> - </span></span>
-                            <!-- <span class="currency">{{Game.platforms | json}}</span> -->
                         </span>
-                        <span *ngIf="Game.esrb_rating" class="pl-2">{{Game.esrb_rating.name}}</span>
+                        <span *ngIf="Game.esrb_rating" class="pl-1"><span class="badge badge-dark">{{Game.esrb_rating.name}}</span></span>
                     </p>
                     <dl *ngIf="Game.ratings" class="param param-feature">
                         <h4>Reactions <fa-icon [icon]="['fas', 'grin-tongue-wink']"></fa-icon>
                         </h4>
                         <dd>
-                            <span *ngIf="Game.ratings[0]" class="badge badge-primary">{{Game.ratings[0].title}}
-                                {{Game.ratings[0].count}}</span><span class="divider pl-1 pr-1"></span>
-                            <span *ngIf="Game.ratings[1]" class="badge badge-secondary">{{Game.ratings[1].title}}
-                                {{Game.ratings[1].count}}</span><span class="divider pl-1 pr-1"></span>
-                            <span *ngIf="Game.ratings[2]" class="badge badge-success">{{Game.ratings[2].title}}
-                                {{Game.ratings[2].count}}</span><span class="divider pl-1 pr-1"></span>
-                            <span *ngIf="Game.ratings[3]" class="badge badge-info">{{Game.ratings[3].title}}
-                                {{Game.ratings[3].count}}</span>
+                            <button *ngIf="Game.ratings[0]" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title=""
+                                data-original-title="Tooltip on top">{{Game.ratings[0].title}} <span class="badge badge-light badge-pill">{{Game.ratings[0].count}}</span></button><span class="divider pl-1 pr-1"></span>
+                            <button *ngIf="Game.ratings[1]" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title=""
+                                data-original-title="Tooltip on top">{{Game.ratings[1].title}} <span class="badge badge-light badge-pill">{{Game.ratings[1].count}}</span> </button><span class="divider pl-1 pr-1"></span>
+                            <button *ngIf="Game.ratings[2]" type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title=""
+                                data-original-title="Tooltip on top">{{Game.ratings[2].title}} <span class="badge badge-light badge-pill">{{Game.ratings[2].count}}</span></button><span class="divider pl-1 pr-1"></span>
+                            <button *ngIf="Game.ratings[3]" type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title=""
+                                data-original-title="Tooltip on top">{{Game.ratings[3].title}} <span class="badge badge-light badge-pill">{{Game.ratings[3].count}}</span></button>
                         </dd>
                     </dl>
                     <dl class="item-property">
@@ -50,6 +52,12 @@
                         <dd>
                             <section>{{Game.description | htmlToText}}</section>
                         </dd>
+                    </dl>
+                    <dl *ngIf="Game.genres">
+                        <h4>Genres</h4>
+                        <button *ngFor="let genre of Game.genres" type="button" class="btn btn-outline-info" data-toggle="tooltip"
+                            data-placement="top" title="" data-original-title="Tooltip on top">{{genre.name}}</button><span
+                            class="divider pl-1 pr-1"></span>
                     </dl>
                     <dl *ngIf="Game.released" class="param param-feature">
                         <h4>Released <fa-icon [icon]="['fas', 'calendar-alt']"></fa-icon></h4>
