@@ -16,7 +16,7 @@
                     <div class="img-big-wrap pl-3 pt-3">
                         <p class="text-center">Image <fa-icon [icon]="['fas', 'image']"></fa-icon></p>
                         <img *ngIf="Game.background_image" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image" class="img-fluid item-gallery mx-auto d-block">
-                        <img *ngIf="!Game.background_image" src="{{defaultImage}}" class="img-fluid item-gallery mx-auto d-block">
+                        <img *ngIf="!Game.background_image" src="{{noImage}}" class="img-fluid item-gallery mx-auto d-block">
                     </div>
                     <div class="img-small-wrap pl-3 pt-3">
                         <img *ngIf="Game.background_image_additional" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image_additional" class="img-fluid item-gallery mx-auto d-block">

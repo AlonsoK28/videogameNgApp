@@ -15,6 +15,8 @@ export class GameDetailComponent implements OnInit {
   Game;
   slug: string = "";
   defaultImage: string = "assets/image/placeholder.png";
+  noImage: string = "assets/image/no-image.png";
+  noImageJumbotron: string = "assets/image/no-image-jumbotron.png";
   loader: boolean = false;
   notFound: boolean = false;
   httpErrorCode: number;
@@ -42,9 +44,16 @@ export class GameDetailComponent implements OnInit {
       data => {
         this.Game = data;
         this.loader = false;
-        this.backgroudImage = {
-          "background-image": `url('${data.background_image}')`
-        };
+        if (this.Game.background_image){
+          this.backgroudImage = {
+            "background-image": `url('${data.background_image}')`
+          };
+        }else{
+            this.backgroudImage = {
+              "background-image": `url('${this.noImageJumbotron}')`
+            };
+
+        }
         console.log("data: ", data);
       },
       //error
