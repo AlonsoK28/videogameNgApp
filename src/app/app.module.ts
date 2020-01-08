@@ -23,7 +23,8 @@ import { GameLoaderComponent } from './game-loader/game-loader.component';
 //pipes
 import { WordToSlugPipe } from './pipes/word-to-slug.pipe';
 import { SlugToWordPipe } from './pipes/slug-to-word.pipe';
-import { HtmlToTextPipe } from './pipes/html-to-text.pipe'; // <-- import it
+import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
+import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
 
 //vendor
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -55,7 +56,7 @@ import {  faAngular,
           faXbox,
           faPlaystation } from '@fortawesome/free-brands-svg-icons';
 import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
-import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
     FontAwesomeModule,
     LazyLoadImageModule.forRoot({
       preset: scrollPreset // <-- tell LazyLoadImage that you want to use scrollPreset
-    })
+    }),
+    RatingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
