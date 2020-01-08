@@ -18,8 +18,12 @@ import { ProductoBusquedaComponent } from './producto-busqueda/producto-busqueda
 import { GameSearchComponent } from './game-search/game-search.component';
 import { GameCardComponent } from './shared/game-card/game-card.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
+import { GameLoaderComponent } from './game-loader/game-loader.component';
+
+//pipes
 import { WordToSlugPipe } from './pipes/word-to-slug.pipe';
 import { SlugToWordPipe } from './pipes/slug-to-word.pipe';
+import { HtmlToTextPipe } from './pipes/html-to-text.pipe'; // <-- import it
 
 //vendor
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -37,10 +41,12 @@ import {  faCircleNotch,
           faFont, 
           faPaperclip,
           faShoppingBasket,
-          faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+          faStarHalfAlt,
+          faExternalLinkAlt,
+          faCalendarAlt,
+          faGrinTongueWink } from '@fortawesome/free-solid-svg-icons';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
 import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
-import { GameLoaderComponent } from './game-loader/game-loader.component'; // <-- import it
 
 @NgModule({
   declarations: [
@@ -58,7 +64,8 @@ import { GameLoaderComponent } from './game-loader/game-loader.component'; // <-
     GameSearchComponent,
     GameCardComponent,
     GameDetailComponent,
-    GameLoaderComponent
+    GameLoaderComponent,
+    HtmlToTextPipe
   ],
   imports: [
     BrowserModule,
@@ -91,6 +98,9 @@ export class AppModule {
       faFont,
       faPaperclip,
       faShoppingBasket,
-      faStarHalfAlt );  
+      faStarHalfAlt,
+      faExternalLinkAlt,
+      faCalendarAlt,
+      faGrinTongueWink );  
   }
 }

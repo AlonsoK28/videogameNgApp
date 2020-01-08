@@ -1,0 +1,31 @@
+.jumbotron {
+  display: flex;
+  align-items: center;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+}
+
+.title-label {
+  background-color: #FFFFFF;
+  display: inline-block;
+  color: #F06529;
+  font-weight: 700;
+  padding: 10px 35px;
+  border-radius: 5px;
+}
+.subtitle-label {
+  background-color: #FFFFFF;
+  display: inline-block;
+  color: #F06529;
+  font-weight: 100;
+}
+
+.jumbotron h3 {
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.game-title{
+    font-weight: 600;
+}
