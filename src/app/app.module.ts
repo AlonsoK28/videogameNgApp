@@ -54,7 +54,9 @@ import {  faCircleNotch,
 import {  faAngular,
           faYoutube,
           faXbox,
-          faPlaystation } from '@fortawesome/free-brands-svg-icons';
+          faPlaystation,
+          faJsSquare,
+          faNodeJs } from '@fortawesome/free-brands-svg-icons';
 import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 import { RatingModule } from 'ng-starrating';
 
@@ -121,6 +123,8 @@ export class AppModule {
       faHeart,
       faShoppingCart,
       faXbox,
-      faPlaystation );  
+      faPlaystation,
+      faJsSquare,
+      faNodeJs );  
   }
 }
