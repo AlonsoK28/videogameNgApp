@@ -23,6 +23,7 @@ import { GameLoaderComponent } from './game-loader/game-loader.component';
 import { WordToSlugPipe } from './pipes/word-to-slug.pipe';
 import { SlugToWordPipe } from './pipes/slug-to-word.pipe';
 import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
+import { IconGeneratorPipe } from './pipes/icon-generator.pipe';
 import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
 
 //vendor
@@ -39,6 +40,7 @@ import {  faCircleNotch,
           faTimes, 
           faCheckCircle, 
           faArrowCircleLeft, 
+          faArrowAltCircleLeft,
           faInfoCircle, 
           faBackspace, 
           faFont, 
@@ -52,15 +54,16 @@ import {  faCircleNotch,
           faUser, 
           faGamepad, 
           faHeart, 
-          faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+          faShoppingCart,
+          faDice } from '@fortawesome/free-solid-svg-icons';
 import {  faAngular,
           faYoutube,
           faXbox,
           faPlaystation,
           faJsSquare,
           faNodeJs,
-          faCss3Alt } from '@fortawesome/free-brands-svg-icons';
-
+          faCss3Alt,
+          faSteam } from '@fortawesome/free-brands-svg-icons';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +82,8 @@ import {  faAngular,
     GameDetailComponent,
     GameLoaderComponent,
     HtmlToTextPipe,
-    DomSanitizerPipe
+    DomSanitizerPipe,
+    IconGeneratorPipe
   ],
   imports: [
     BrowserModule,
@@ -128,6 +132,9 @@ export class AppModule {
       faPlaystation,
       faJsSquare,
       faNodeJs,
-      faCss3Alt );  
+      faCss3Alt,
+      faArrowAltCircleLeft,
+      faSteam,
+      faDice );  
   }
 }

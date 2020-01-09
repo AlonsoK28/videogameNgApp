@@ -1,13 +1,13 @@
-<div class="jumbotron" [ngStyle]="jumbotronBackgroudImage" *ngIf="!notFound && !loader">
+<div class="jumbotron mb-4" [ngStyle]="jumbotronBackgroudImage" *ngIf="!notFound && !loader">
     <div class="container">
         <div class="row text-center">
             <h2 class="title-label">{{Game.name}} <span *ngIf="Game.publishers[0]" class="subtitle-label">by {{Game.publishers[0]?.name}}</span></h2>
         </div>
     </div>
 </div>
-
 <!-- Boostrap detail https://bootsnipp.com/snippets/orOGB -->
 <div class="container mb-4" *ngIf="!notFound && !loader">
+    <button type="button" class="btn btn-primary mb-4" (click)="goBack()"><fa-icon [icon]="['fas', 'arrow-alt-circle-left']"></fa-icon> Back</button>
     <div class="card fade-in pb-4">
         <div class="row">
             <aside class="col-sm-5 border-right pl-1">
@@ -24,8 +24,7 @@
                     <div *ngIf="Game.clip" class="img-small-wrap pl-3 pt-3">
                         <p class="text-center">Videoclip <fa-icon [icon]="['fab', 'youtube']"></fa-icon></p>
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" [src]="Game.clip.clip | domSanitizer:'Game.clip.clip'"
-                                allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" [src]="Game.clip.clip | domSanitizer:'Game.clip.clip'" allowfullscreen></iframe>
                         </div>
                     </div> 
                 </article>
@@ -39,26 +38,31 @@
                         </span>
                         <span *ngIf="Game.esrb_rating" class="pl-1"><span class="badge badge-dark">{{Game.esrb_rating.name}} <fa-icon [icon]="['fas', 'user']"></fa-icon></span></span>
                     </p>
-                    <dl *ngIf="Game.ratings[0]" class="param param-feature">
+                    <dl *ngIf="Game.ratings[0]">
                         <h4>Reactions <fa-icon [icon]="['fas', 'grin-tongue-wink']"></fa-icon>
                         </h4>
                         <dd>
-                            <button *ngIf="Game.ratings[0]" type="button" class="btn btn-primary">{{Game.ratings[0].title}} <span class="badge badge-light badge-pill">{{Game.ratings[0].percent | number:'1.0-0'}}%</span></button><span class="divider pl-1 pr-1"></span>
+                            <button *ngFor="let rating of Game.ratings; index as i;" type="button" class="btn btn-{{ratingColorTone[i].name}} mr-1">{{rating.title | titlecase}} <span class="badge badge-light badge-pill">{{rating.percent | number:'1.0-0'}}%</span></button><span class="divider pl-1 pr-1"></span>
+                            <span class="divider pl-1 pr-1"></span>
+                        </dd>
+                        <!-- <dd>
+                            <button *ngIf="Game.ratings[0]" type="button" class="btn btn-primary">{{Game.ratings[0].title}} <span class="badge badge-light badge-pill">{{Game.ratings[0].percent | number:'1.0-0'}}%</span></button>
                             <button *ngIf="Game.ratings[1]" type="button" class="btn btn-secondary">{{Game.ratings[1].title}} <span class="badge badge-light badge-pill">{{Game.ratings[1].percent | number:'1.0-0'}}%</span> </button><span class="divider pl-1 pr-1"></span>
                             <button *ngIf="Game.ratings[2]" type="button" class="btn btn-success">{{Game.ratings[2].title}} <span class="badge badge-light badge-pill">{{Game.ratings[2].percent | number:'1.0-0'}}%</span></button><span class="divider pl-1 pr-1"></span>
                             <button *ngIf="Game.ratings[3]" type="button" class="btn btn-info">{{Game.ratings[3].title}} <span class="badge badge-light badge-pill">{{Game.ratings[3].percent | number:'1.0-0'}}%</span></button>
-                        </dd>
+                        </dd> -->
                     </dl>
-                    <dl *ngIf="Game.rating || Game.released">
+                    <dl *ngIf="Game.rating && Game.released">
                         <dd>
                             <div>
+                                <span *ngIf="Game.reviews_count">({{Game.reviews_count}})</span>
                                 <span *ngIf="Game.rating"><star-rating value="{{Game.rating}}" totalstars="5" checkedcolor="yellow" uncheckedcolor="gray" size="24px" readonly="true"></star-rating></span>
                                 <span *ngIf="Game.released">Released <fa-icon [icon]="['fas', 'calendar-alt']"></fa-icon> {{Game.released}}</span>
                             </div>
                         </dd>
                     </dl>
                     <hr>
-                    <dl class="item-property">
+                    <dl *ngIf="Game.description_raw">
                         <h4>Description <fa-icon [icon]="['fas', 'info-circle']"></fa-icon></h4>
                         <dd>
                             <section class="description-elipsis">{{Game.description_raw | htmlToText}}</section>
@@ -66,7 +70,7 @@
                     </dl>
                     <dl *ngIf="Game.stores[0]">
                         <h4>Buy now <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></h4>
-                        <a *ngFor="let store of Game.stores" href="{{store.url}}" target="_blank"><button type="button" class="btn btn-primary mr-1">{{store.store.name}} <fa-icon [icon]="['fab', 'playstation']"></fa-icon></button></a>
+                        <a *ngFor="let store of Game.stores" href="{{store.url}}" target="_blank"><button type="button" class="btn btn-primary mr-1 mb-2">{{store.store.name}} <fa-icon [icon]="[store.store.slug | iconGenerator:'prefix', store.store.slug | iconGenerator:'logo']"></fa-icon></button></a>
                     </dl>
                     <hr>
                     <dl *ngIf="Game.genres[0]">

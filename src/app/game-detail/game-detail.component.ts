@@ -4,6 +4,7 @@ import { GameDetailAPI } from '../models/games';
 import { httpError } from '../httpError';
 import { GameRestApiService } from '../services/game-rest-api.service';
 import { Lightbox } from 'ngx-lightbox';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-game-detail',
@@ -23,10 +24,25 @@ export class GameDetailComponent implements OnInit {
   httpErrorMessage: string;
   jumbotronBackgroudImage:object;
   private _albums = [];
+  ratingColorTone:object = {
+    0: {
+      name: "primary"
+    },
+    1: {
+      name: "secondary"
+    },
+    2: {
+      name: "success"
+    },
+    3: {
+      name: "info"
+    }
+  };
 
   constructor(private gameRestApi: GameRestApiService,
               private route: ActivatedRoute,
-              private _lightbox: Lightbox ) { 
+              private _lightbox: Lightbox,
+              private _location: Location ) { 
 
     this.route.params.subscribe(params => {
       if (params.slug) {
@@ -57,18 +73,8 @@ export class GameDetailComponent implements OnInit {
       data => {
         this.Game = data;
         this.loader = false;
-        if (this.Game.background_image){
-          this.jumbotronBackgroudImage = {
-            "background-image": `url('${data.background_image}')`
-          };
-        }else{
-            this.jumbotronBackgroudImage = {
-              "background-image": `url('${this.noImageJumbotron}')`
-            };
-
-        }
+        this.loadjumbotronBackgroudImage();
         this.loadLigthboxImages();
-        console.log("data: ", data);
       },
       //error
       (err: httpError) => {
@@ -82,6 +88,19 @@ export class GameDetailComponent implements OnInit {
         console.info("Data correctly recieved by Observer ✔️");
       }
     );
+  }
+
+  loadjumbotronBackgroudImage(){
+    if (this.Game.background_image) {
+      this.jumbotronBackgroudImage = {
+        "background-image": `url('${this.Game.background_image}')`
+      };
+    } else {
+      this.jumbotronBackgroudImage = {
+        "background-image": `url('${this.noImageJumbotron}')`
+      };
+
+    }
   }
 
   loadLigthboxImages(){
@@ -104,6 +123,10 @@ export class GameDetailComponent implements OnInit {
       };
       this._albums.push(album);
     }
+  }
+
+  goBack(){
+    this._location.back();
   }
 
 }
