@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductosRestApiService } from '../services/productos-rest-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { GameDetailAPI } from '../models/games';
 import { httpError } from '../httpError';
 import { GameRestApiService } from '../services/game-rest-api.service';
+import { Lightbox } from 'ngx-lightbox';
 
 @Component({
   selector: 'app-game-detail',
@@ -22,14 +22,27 @@ export class GameDetailComponent implements OnInit {
   httpErrorCode: number;
   httpErrorMessage: string;
   jumbotronBackgroudImage:object;
+  private _albums = [];
 
   constructor(private gameRestApi: GameRestApiService,
-              private route: ActivatedRoute ) { 
+              private route: ActivatedRoute,
+              private _lightbox: Lightbox ) { 
+
     this.route.params.subscribe(params => {
       if (params.slug) {
         this.slug = params.slug;
       }
     });
+  }
+
+  open(index: number): void {
+    // open lightbox
+    this._lightbox.open(this._albums, index);
+  }
+
+  close(): void {
+    // close lightbox programmatically
+    this._lightbox.close();
   }
 
   ngOnInit() {
@@ -54,6 +67,7 @@ export class GameDetailComponent implements OnInit {
             };
 
         }
+        this.loadLigthboxImages();
         console.log("data: ", data);
       },
       //error
@@ -68,6 +82,28 @@ export class GameDetailComponent implements OnInit {
         console.info("Data correctly recieved by Observer ✔️");
       }
     );
+  }
+
+  loadLigthboxImages(){
+    const backgroundImage = this.Game.background_image; 
+    const backgroundImageAditional = this.Game.background_image_additional; 
+
+    if (backgroundImage){
+      const album = {
+        src: backgroundImage,
+        caption: `Background image of ${this.Game.name}`,
+        thumb: ""
+      };
+      this._albums.push(album);
+    }
+    if (backgroundImageAditional){
+      const album = {
+        src: backgroundImageAditional,
+        caption: `Background image aditional of ${this.Game.name}`,
+        thumb: ""
+      };
+      this._albums.push(album);
+    }
   }
 
 }

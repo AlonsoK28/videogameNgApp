@@ -27,6 +27,9 @@ import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
 import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
 
 //vendor
+import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+import { RatingModule } from 'ng-starrating';
+import { LightboxModule } from 'ngx-lightbox';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {  faCircleNotch, 
           faPoll, 

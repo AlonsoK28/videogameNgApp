@@ -15,14 +15,14 @@
                     <!-- {{Game | json}} -->
                     <div class="img-big-wrap mt-3">
                         <p class="text-center">Image <fa-icon [icon]="['fas', 'image']"></fa-icon></p>
-                        <img *ngIf="Game.background_image" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image" class="img-fluid item-gallery mx-auto d-block pl-4">
+                        <img *ngIf="Game.background_image" [src]="Game.background_image" (click)="open(i)" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image" class="img-fluid item-gallery mx-auto d-block pl-4 hand-cursor">
                         <img *ngIf="!Game.background_image" src="{{noImage}}" class="img-fluid item-gallery mx-auto d-block">
                     </div>
                     <div class="img-small-wrap">
-                        <img *ngIf="Game.background_image_additional" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image_additional" class="img-fluid item-gallery mx-auto d-block pl-4 pt-4">
+                        <img *ngIf="Game.background_image_additional" [src]="Game.background_image_additional" (click)="open(i)" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image_additional" class="img-fluid item-gallery mx-auto d-block pl-4 pt-4 hand-cursor">
                     </div> 
                     <div *ngIf="Game.clip" class="img-small-wrap pl-3 pt-3">
-                        <p class="text-center">Video clip <fa-icon [icon]="['fab', 'youtube']"></fa-icon></p>
+                        <p class="text-center">Videoclip <fa-icon [icon]="['fab', 'youtube']"></fa-icon></p>
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item" [src]="Game.clip.clip | domSanitizer:'Game.clip.clip'"
                                 allowfullscreen></iframe>
