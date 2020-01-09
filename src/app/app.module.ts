@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -59,9 +58,8 @@ import {  faAngular,
           faXbox,
           faPlaystation,
           faJsSquare,
-          faNodeJs } from '@fortawesome/free-brands-svg-icons';
-import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
-import { RatingModule } from 'ng-starrating';
+          faNodeJs,
+          faCss3Alt } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   declarations: [
@@ -91,9 +89,10 @@ import { RatingModule } from 'ng-starrating';
     ReactiveFormsModule,
     FontAwesomeModule,
     LazyLoadImageModule.forRoot({
-      preset: scrollPreset // <-- tell LazyLoadImage that you want to use scrollPreset
+      preset: scrollPreset
     }),
     RatingModule,
+    LightboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -128,6 +127,7 @@ export class AppModule {
       faXbox,
       faPlaystation,
       faJsSquare,
-      faNodeJs );  
+      faNodeJs,
+      faCss3Alt );  
   }
 }
