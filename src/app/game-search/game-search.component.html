@@ -43,6 +43,8 @@
         </div>
     </div>
 </div>
-<app-game-card [games-param] = "Games"></app-game-card>
+<div *ngIf="!loader">
+    <app-game-card [games-param] = "Games"></app-game-card>
+</div>
 <app-game-loader [noResults-param] = "noResults"
                  [loader-param]    = "loader" ></app-game-loader>
