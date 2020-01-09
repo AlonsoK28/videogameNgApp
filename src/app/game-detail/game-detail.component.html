@@ -43,10 +43,10 @@
                         <h4>Reactions <fa-icon [icon]="['fas', 'grin-tongue-wink']"></fa-icon>
                         </h4>
                         <dd>
-                            <button *ngIf="Game.ratings[0]" type="button" class="btn btn-primary">{{Game.ratings[0].title}} <span class="badge badge-light badge-pill">{{Game.ratings[0].count}}</span></button><span class="divider pl-1 pr-1"></span>
-                            <button *ngIf="Game.ratings[1]" type="button" class="btn btn-secondary">{{Game.ratings[1].title}} <span class="badge badge-light badge-pill">{{Game.ratings[1].count}}</span> </button><span class="divider pl-1 pr-1"></span>
-                            <button *ngIf="Game.ratings[2]" type="button" class="btn btn-success">{{Game.ratings[2].title}} <span class="badge badge-light badge-pill">{{Game.ratings[2].count}}</span></button><span class="divider pl-1 pr-1"></span>
-                            <button *ngIf="Game.ratings[3]" type="button" class="btn btn-info">{{Game.ratings[3].title}} <span class="badge badge-light badge-pill">{{Game.ratings[3].count}}</span></button>
+                            <button *ngIf="Game.ratings[0]" type="button" class="btn btn-primary">{{Game.ratings[0].title}} <span class="badge badge-light badge-pill">{{Game.ratings[0].percent | number:'1.0-0'}}%</span></button><span class="divider pl-1 pr-1"></span>
+                            <button *ngIf="Game.ratings[1]" type="button" class="btn btn-secondary">{{Game.ratings[1].title}} <span class="badge badge-light badge-pill">{{Game.ratings[1].percent | number:'1.0-0'}}%</span> </button><span class="divider pl-1 pr-1"></span>
+                            <button *ngIf="Game.ratings[2]" type="button" class="btn btn-success">{{Game.ratings[2].title}} <span class="badge badge-light badge-pill">{{Game.ratings[2].percent | number:'1.0-0'}}%</span></button><span class="divider pl-1 pr-1"></span>
+                            <button *ngIf="Game.ratings[3]" type="button" class="btn btn-info">{{Game.ratings[3].title}} <span class="badge badge-light badge-pill">{{Game.ratings[3].percent | number:'1.0-0'}}%</span></button>
                         </dd>
                     </dl>
                     <dl *ngIf="Game.rating || Game.released">
@@ -69,7 +69,7 @@
                         <a *ngFor="let store of Game.stores" href="{{store.url}}" target="_blank"><button type="button" class="btn btn-primary mr-1">{{store.store.name}} <fa-icon [icon]="['fab', 'playstation']"></fa-icon></button></a>
                     </dl>
                     <hr>
-                    <dl *ngIf="Game.genres">
+                    <dl *ngIf="Game.genres[0]">
                         <h4>Genres <fa-icon [icon]="['fas', 'gamepad']"></fa-icon></h4>
                         <button *ngFor="let genre of Game.genres" type="button" class="btn btn-outline-info mr-1">{{genre.name}}</button>
                     </dl>
