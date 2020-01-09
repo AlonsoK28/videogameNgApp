@@ -1,4 +1,4 @@
-<div class="jumbotron" [ngStyle]="backgroudImage" *ngIf="!notFound && !loader">
+<div class="jumbotron" [ngStyle]="jumbotronBackgroudImage" *ngIf="!notFound && !loader">
     <div class="container">
         <div class="row text-center">
             <h2 class="title-label">{{Game.name}} <span *ngIf="Game.publishers[0]" class="subtitle-label">by {{Game.publishers[0]?.name}}</span></h2>
@@ -13,13 +13,13 @@
             <aside class="col-sm-5 border-right pl-1">
                 <article class="gallery-wrap">
                     <!-- {{Game | json}} -->
-                    <div class="img-big-wrap pl-3 pt-3">
+                    <div class="img-big-wrap mt-3">
                         <p class="text-center">Image <fa-icon [icon]="['fas', 'image']"></fa-icon></p>
-                        <img *ngIf="Game.background_image" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image" class="img-fluid item-gallery mx-auto d-block">
+                        <img *ngIf="Game.background_image" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image" class="img-fluid item-gallery mx-auto d-block pl-4">
                         <img *ngIf="!Game.background_image" src="{{noImage}}" class="img-fluid item-gallery mx-auto d-block">
                     </div>
-                    <div class="img-small-wrap pl-3 pt-3">
-                        <img *ngIf="Game.background_image_additional" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image_additional" class="img-fluid item-gallery mx-auto d-block">
+                    <div class="img-small-wrap">
+                        <img *ngIf="Game.background_image_additional" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image_additional" class="img-fluid item-gallery mx-auto d-block pl-4 pt-4">
                     </div> 
                     <div *ngIf="Game.clip" class="img-small-wrap pl-3 pt-3">
                         <p class="text-center">Video clip <fa-icon [icon]="['fab', 'youtube']"></fa-icon></p>

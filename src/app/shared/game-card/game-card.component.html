@@ -8,7 +8,7 @@
                     <img *ngIf="!game.background_image" class="card-img" src="{{noImage}}">
                     <div class="card-img-overlay d-flex justify-content-end">
                         <a class="card-link text-danger like">
-                            <button *ngIf="game.platforms[0]" type="button" class="btn btn-light">{{game.platforms[0].platform.name}}</button>
+                            <button *ngIf="game.platforms" type="button" class="btn btn-light">{{game.platforms[0].platform.name}}</button>
                         </a>
                     </div>
                     <div class="card-body">

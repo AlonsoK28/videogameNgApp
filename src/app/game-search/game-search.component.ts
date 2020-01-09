@@ -3,6 +3,7 @@ import { ProductosRestApiService } from '../services/productos-rest-api.service'
 import { GameAPI } from '../models/games';
 import { ActivatedRoute } from '@angular/router';
 import { GameRestApiService } from '../services/game-rest-api.service';
+import { httpError } from '../httpError';
 @Component({
   selector: 'app-game-search',
   templateUrl: './game-search.component.html',
@@ -15,7 +16,8 @@ export class GameSearchComponent implements OnInit {
   searchTemplate:boolean = true;  
   loader:boolean = false;
   noResults:boolean = false;
-
+  httpErrorCode: number;
+  httpErrorMessage: string;
 
   constructor(private gameRestApi: GameRestApiService,
               private route: ActivatedRoute ) { 
@@ -45,13 +47,24 @@ export class GameSearchComponent implements OnInit {
   gameList(){
     this.loader = true;
     return this.gameRestApi.getGameList(this.searchTerm).subscribe(
-        data => {
-          this.Games = data;
-          this.loader = false;
-          if (!data.length){
-            this.noResults = true;
-          }
+        //next
+      data => { 
+        this.Games = data;
+        this.loader = false;
+        if (!data.length){
+          this.noResults = true;
         }
+      },
+      //error
+      (err: httpError) => {
+        this.loader = false;
+        this.httpErrorCode = err.httpStatusCode;
+        this.httpErrorMessage = err.httpErrorMessage;
+      },
+      //complete
+      ()=>{
+        console.info("Data correctly recieved by Observer ✔️");
+      }
     );
   }
 

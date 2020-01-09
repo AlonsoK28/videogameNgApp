@@ -21,7 +21,7 @@ export class GameDetailComponent implements OnInit {
   notFound: boolean = false;
   httpErrorCode: number;
   httpErrorMessage: string;
-  backgroudImage:object;
+  jumbotronBackgroudImage:object;
 
   constructor(private gameRestApi: GameRestApiService,
               private route: ActivatedRoute ) { 
@@ -45,11 +45,11 @@ export class GameDetailComponent implements OnInit {
         this.Game = data;
         this.loader = false;
         if (this.Game.background_image){
-          this.backgroudImage = {
+          this.jumbotronBackgroudImage = {
             "background-image": `url('${data.background_image}')`
           };
         }else{
-            this.backgroudImage = {
+            this.jumbotronBackgroudImage = {
               "background-image": `url('${this.noImageJumbotron}')`
             };
 
@@ -62,6 +62,10 @@ export class GameDetailComponent implements OnInit {
         this.httpErrorCode = err.httpStatusCode;
         this.httpErrorMessage = err.httpErrorMessage;
         this.notFound = true;
+      },
+      //complete
+      ()=>{
+        console.info("Data correctly recieved by Observer ✔️");
       }
     );
   }
