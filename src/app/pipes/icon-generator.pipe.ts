@@ -7,20 +7,11 @@ import { logo } from '../logos';
 export class IconGeneratorPipe implements PipeTransform {
 
   transform(iconName:string, type:string): string {
-    console.log("IconGeneratorPipe: ", type);
-    switch(type){
-      case 'logo':
-        if (logo[iconName]) {
-          return logo[iconName].logo;
-        } else {
-          return logo.other.logo;
-        }
-      case 'prefix':
-        if (logo[iconName]) {
-          return logo[iconName].prefix;
-        } else {
-          return logo.other.prefix;
-        }
+    // search for icon logo or icon prefix by associative value
+    if (logo[iconName]) {
+      return logo[iconName][type];
+    } else {
+      return logo.other[type];
     }
   }
 
