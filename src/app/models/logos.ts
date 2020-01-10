@@ -42,6 +42,22 @@ export const platformLogo = {
             "logo": "playstation",
             "prefix": "fab"
         },
+        "playstation4":{
+            "logo": "playstation",
+            "prefix": "fab"
+        },
+        "playstation5":{
+            "logo": "playstation",
+            "prefix": "fab"
+        },
+        "psp":{
+            "logo": "playstation",
+            "prefix": "fab"
+        },
+        "ps-vita":{
+            "logo": "playstation",
+            "prefix": "fab"
+        },
         "xbox360":{
             "logo": "xbox",
             "prefix": "fab"
@@ -54,13 +70,57 @@ export const platformLogo = {
             "logo": "laptop",
             "prefix": "fas"
         },
-        "apple":{
+        "ios":{
+            "logo": "apple",
+            "prefix": "fab"
+        },
+        "macos":{
             "logo": "apple",
             "prefix": "fab"
         },
         "android":{
             "logo": "android",
             "prefix": "fab"
+        },
+        "web":{
+            "logo": "chrome",
+            "prefix": "fab"
+        },
+        "nintendo":{
+            "logo": "gamepad",
+            "prefix": "fas"
+        },
+        "wii":{
+            "logo": "gamepad",
+            "prefix": "fas"
+        },
+        "wii-u":{
+            "logo": "gamepad",
+            "prefix": "fas"
+        },
+        "nintendo-3ds":{
+            "logo": "gamepad",
+            "prefix": "fas"
+        },
+        "nintendo-ds":{
+            "logo": "gamepad",
+            "prefix": "fas"
+        },
+        "nintendo-switch":{
+            "logo": "gamepad",
+            "prefix": "fas"
+        },
+        "nes":{
+            "logo": "gamepad",
+            "prefix": "fas"
+        },
+        "gamecube":{
+            "logo": "gamepad",
+            "prefix": "fas"
+        },
+        "nintendo-64":{
+            "logo": "gamepad",
+            "prefix": "fas"
         },
         other:{
             "logo": "dice",
