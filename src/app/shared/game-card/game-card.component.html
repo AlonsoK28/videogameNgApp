@@ -6,10 +6,12 @@
                 <div class="card border-success">
                     <img *ngIf="game.background_image" class="card-img" [defaultImage]="defaultImage" [lazyLoad]="game.background_image">
                     <img *ngIf="!game.background_image" class="card-img" src="{{noImage}}">
-                    <div class="card-img-overlay d-flex justify-content-end">
-                        <a class="card-link text-danger like">
-                            <button *ngIf="game.platforms;" type="button" class="btn btn-light">{{game.platforms[0].platform.name}} <fa-icon [icon]="[game.platforms[0].platform.slug | iconGenerator:'prefix':'platform', game.platforms[0].platform.slug | iconGenerator:'logo':'platform']"></fa-icon></button>
-                        </a>
+                    <div *ngIf="game.platforms;" class="card-img-overlay d-flex justify-content-end">
+                        <div *ngFor="let platform of game.platforms; let i = index; odd as isOdd; even as isEven">
+                            <a *ngIf="i < 3" class="card-link text-danger like">
+                                <button type="button" class="btn btn-light" [ngClass]="{'mr-1 ml-1' : isOdd}">{{platform.platform.name}} <fa-icon [icon]="[platform.platform.slug | iconGenerator:'prefix':'platform', platform.platform.slug | iconGenerator:'logo':'platform']"></fa-icon></button>
+                            </a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">{{game.name}}</h4>
