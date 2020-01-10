@@ -24,31 +24,17 @@ export class GameDetailComponent implements OnInit {
   httpErrorMessage: string;
   jumbotronBackgroudImage:object;
   private _albums = [];
-  ratingColorTone:object = {
-    0: {
-      name: "primary"
-    },
-    1: {
-      name: "secondary"
-    },
-    2: {
-      name: "success"
-    },
-    3: {
-      name: "info"
-    }
-  };
 
   constructor(private gameRestApi: GameRestApiService,
               private route: ActivatedRoute,
               private _lightbox: Lightbox,
               private _location: Location ) { 
-
     this.route.params.subscribe(params => {
       if (params.slug) {
         this.slug = params.slug;
       }
     });
+
   }
 
   open(index: number): void {

@@ -25,6 +25,7 @@ import { SlugToWordPipe } from './pipes/slug-to-word.pipe';
 import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
 import { IconGeneratorPipe } from './pipes/icon-generator.pipe';
 import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
+import { RatingColorPipe } from './pipes/rating-color.pipe';
 
 //vendor
 import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
@@ -55,7 +56,8 @@ import {  faCircleNotch,
           faGamepad, 
           faHeart, 
           faShoppingCart,
-          faDice } from '@fortawesome/free-solid-svg-icons';
+          faDice,
+          faLaptop } from '@fortawesome/free-solid-svg-icons';
 import {  faAngular,
           faYoutube,
           faXbox,
@@ -63,7 +65,12 @@ import {  faAngular,
           faJsSquare,
           faNodeJs,
           faCss3Alt,
-          faSteam } from '@fortawesome/free-brands-svg-icons';
+          faSteam, 
+          faHtml5,
+          faApple,
+          faAppStoreIos,
+          faAndroid,
+          faGooglePlay   } from '@fortawesome/free-brands-svg-icons';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +90,8 @@ import {  faAngular,
     GameLoaderComponent,
     HtmlToTextPipe,
     DomSanitizerPipe,
-    IconGeneratorPipe
+    IconGeneratorPipe,
+    RatingColorPipe
   ],
   imports: [
     BrowserModule,
@@ -135,6 +143,12 @@ export class AppModule {
       faCss3Alt,
       faArrowAltCircleLeft,
       faSteam,
-      faDice );  
+      faDice,
+      faHtml5,
+      faLaptop,
+      faApple,
+      faAppStoreIos,
+      faAndroid,
+      faGooglePlay );  
   }
 }
