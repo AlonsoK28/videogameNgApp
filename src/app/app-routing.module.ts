@@ -6,14 +6,16 @@ import { ProductoNuevoComponent } from './producto-nuevo/producto-nuevo.componen
 import { ProductoBusquedaComponent } from './producto-busqueda/producto-busqueda.component';
 import { GameSearchComponent } from './game-search/game-search.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
+import { GameListComponent } from './game-list/game-list.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/listado-productos", pathMatch: "full"},
+  { path: "", redirectTo: "/game-list", pathMatch: "full"},
   { path: "listado-productos", component: ProductosComponent },
   { path: "detalle-producto/:slug", component: ProductoDetalleComponent },
   { path: "game-detail/:slug", component: GameDetailComponent },
   { path: "agregar-producto", component: ProductoNuevoComponent },
   { path: "busqueda", component: ProductoBusquedaComponent },
+  { path: "game-list", component: GameListComponent },
   { path: "game-search", component: GameSearchComponent },
   { path: "game-search/:searchTerm", component: GameSearchComponent },
   { path: "busqueda/:termino", component: ProductoBusquedaComponent }

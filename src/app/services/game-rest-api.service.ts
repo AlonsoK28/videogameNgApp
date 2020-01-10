@@ -15,7 +15,8 @@ export class GameRestApiService {
   apiPORT = "8888";
   apiURL = `${this.apiPROTOCOL}${this.apiHOST}`;
   httpE: httpError;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
@@ -26,7 +27,7 @@ export class GameRestApiService {
   /**
   * @autor Carlos Alonso Casales Ortega
   */
-  getGameList(query: string): Observable<GameAPI[]> {
+  getGameSearch(query: string): Observable<GameAPI[]> {
     return this.http.get<GameAPI>(`${this.apiURL}/games?search=${query}&page_size=50`)
       .pipe(
         tap(console.log),
@@ -54,6 +55,24 @@ export class GameRestApiService {
         retry(1),
         catchError(this.handleError)
       );
+  }
+
+  /**
+  * @autor Carlos Alonso Casales Ortega
+  */
+  getGameList(query: string): Observable<GameAPI[]> {
+    return this.http.get<GameAPI>(`${this.apiURL}/games?publishers=electronic-arts,microsoft-studios&page_size=50`)
+      .pipe(
+        tap(console.log),
+        map((res) => {
+          if (res.results.length > 0) {
+            return res.results;
+          }
+          return 0;
+        }),
+        retry(1),
+        catchError(this.handleError))
+      ;
   }
 
   // Observer for Error handling 

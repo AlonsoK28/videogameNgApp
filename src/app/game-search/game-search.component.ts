@@ -47,7 +47,7 @@ export class GameSearchComponent implements OnInit {
   gameList(){
     this.loader = true;
     this.noResults = false;
-    return this.gameRestApi.getGameList(this.searchTerm).subscribe(
+    return this.gameRestApi.getGameSearch(this.searchTerm).subscribe(
         //next
       data => { 
         this.Games = data;

@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-//imports needed
+//components
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductosComponent } from './productos/productos.component';
@@ -18,6 +18,7 @@ import { GameSearchComponent } from './game-search/game-search.component';
 import { GameCardComponent } from './shared/game-card/game-card.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { GameLoaderComponent } from './game-loader/game-loader.component';
+import { GameListComponent } from './game-list/game-list.component';
 
 //pipes
 import { WordToSlugPipe } from './pipes/word-to-slug.pipe';
@@ -91,7 +92,8 @@ import {  faAngular,
     HtmlToTextPipe,
     DomSanitizerPipe,
     IconGeneratorPipe,
-    RatingColorPipe
+    RatingColorPipe,
+    GameListComponent
   ],
   imports: [
     BrowserModule,
