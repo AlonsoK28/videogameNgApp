@@ -2,27 +2,31 @@
 <div class="container productos-card" *ngIf="Games.length > 0">
     <div class="row">
         <div class="card-columns">
-            <a *ngFor="let game of Games" routerLink="/game-detail/{{ game.slug }}" class="fade-in">    
+            <a *ngFor="let game of Games;" routerLink="/game-detail/{{ game.slug }}" class="fade-in">    
                 <div class="card border-success">
                     <img *ngIf="game.background_image" class="card-img" [defaultImage]="defaultImage" [lazyLoad]="game.background_image">
                     <img *ngIf="!game.background_image" class="card-img" src="{{noImage}}">
                     <div class="card-img-overlay d-flex justify-content-end">
                         <a class="card-link text-danger like">
-                            <button *ngIf="game.platforms" type="button" class="btn btn-light">{{game.platforms[0].platform.name}}</button>
+                            <button *ngIf="game.platforms;" type="button" class="btn btn-light">{{game.platforms[0].platform.name}} <fa-icon [icon]="[game.platforms[0].platform.slug | iconGenerator:'prefix':'platform', game.platforms[0].platform.slug | iconGenerator:'logo':'platform']"></fa-icon></button>
                         </a>
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">{{game.name}}</h4>
-                        <h6 *ngIf="!game.released" class="card-subtitle mb-2 text-muted">No release data</h6>
-                        <h6 *ngIf="game.released" class="card-subtitle mb-2 text-muted">Released: {{ game.released }}</h6>
+                        <h6 *ngIf="game.released" class="card-subtitle mb-2 text-muted">Released <fa-icon [icon]="['fas', 'calendar-alt']"></fa-icon> {{ game.released }}</h6>
                         <div class="buy d-flex justify-content-between align-items-center">
                             <div class="price text-success">
                                 <h5 *ngIf="game.score">
                                     <star-rating value="{{game.score}}" totalstars="5" checkedcolor="yellow" uncheckedcolor="gray" size="24px" readonly="true"></star-rating>
                                 </h5>
-                                <h5 *ngIf="!game.score" class="mt-4">No score data </h5>
                             </div>
                             <!-- <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a> -->
+                        </div>
+                        <div>
+                            <h5 *ngIf="game.ratings">
+                                <button *ngFor="let rating of game.ratings;" type="button" class="btn btn-{{rating.title | ratingColor}} mr-1">{{rating.title | titlecase}} <span class="badge badge-light badge-pill">{{rating.percent | number:'1.0-0'}}%</span></button>
+                                <span class="divider pl-1 pr-1"></span>
+                            </h5>
                         </div>
                     </div>
                 </div>
