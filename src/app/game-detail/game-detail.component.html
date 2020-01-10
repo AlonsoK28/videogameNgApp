@@ -1,3 +1,4 @@
+<!-- todo https://startbootstrap.com/snippets/video-header/ -->
 <div class="jumbotron mb-4" [ngStyle]="jumbotronBackgroudImage" *ngIf="!notFound && !loader">
     <div class="container">
         <div class="row text-center">
@@ -6,7 +7,7 @@
     </div>
 </div>
 <!-- Boostrap detail https://bootsnipp.com/snippets/orOGB -->
-<div class="container mb-4" *ngIf="!notFound && !loader">
+<div class="container mb-4 pl-0 pr-0" *ngIf="!notFound && !loader">
     <button type="button" class="btn btn-primary mb-4" (click)="goBack()"><fa-icon [icon]="['fas', 'arrow-alt-circle-left']"></fa-icon> Back</button>
     <div class="card fade-in pb-4">
         <div class="row">
@@ -20,10 +21,10 @@
                     <div class="img-small-wrap">
                         <img *ngIf="Game.background_image_additional" [src]="Game.background_image_additional" (click)="open(i)" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image_additional" class="img-fluid item-gallery mx-auto d-block pl-4 pt-4 hand-cursor">
                     </div> 
-                    <div *ngIf="Game.clip" class="img-small-wrap pl-3 pt-3">
+                    <div *ngIf="Game.clip" class="img-small-wrap pl-3 pt-3 hand-cursor">
                         <p class="text-center">Videoclip <fa-icon [icon]="['fab', 'youtube']"></fa-icon></p>
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" [src]="Game.clip.clip | domSanitizer:'Game.clip.clip'" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" [src]="Game.clip.clip | domSanitizer:'Game.clip.clip'" allowfullscreen autoplay="off"></iframe>
                         </div>
                     </div> 
                 </article>
@@ -33,7 +34,7 @@
                     <h1 class="title mb-3 game-title">{{Game.name}}</h1>
                     <p class="price-detail-wrap">
                         <span class="price h3 text-warning align-middle">
-                            <span *ngFor="let platform of Game.platforms; let i = index; last as isLast;" class="currency">{{platform.platform.name}}<span *ngIf="!isLast" style="font-size: 10px;" class="ml-2 mr-2 align-middle"><fa-icon [icon]="['fas', 'asterisk']"></fa-icon></span></span>
+                            <span *ngFor="let platform of Game.platforms; let i = index; last as isLast;" class="currency">{{platform.platform.name}}<fa-icon [icon]="[platform.platform.slug | iconGenerator:'prefix':'platform', platform.platform.slug | iconGenerator:'logo':'platform']" class="fa-xs align-middle ml-2 mr-2"></fa-icon></span>
                         </span>
                         <span *ngIf="Game.esrb_rating" class="pl-1"><span class="badge badge-dark">{{Game.esrb_rating.name}} <fa-icon [icon]="['fas', 'user']"></fa-icon></span></span>
                     </p>
@@ -54,18 +55,18 @@
                             </div>
                         </dd>
                     </dl>
-                    <hr>
                     <dl *ngIf="Game.description_raw">
+                        <hr class="bg-white">
                         <h4>Description <fa-icon [icon]="['fas', 'info-circle']"></fa-icon></h4>
                         <dd>
                             <section class="description-elipsis">{{Game.description_raw | htmlToText}}</section>
                         </dd>
+                        <hr class="bg-white">
                     </dl>
                     <dl *ngIf="Game.stores[0]">
                         <h4>Buy now <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></h4>
                         <a *ngFor="let store of Game.stores" href="{{store.url}}" target="_blank"><button type="button" class="btn btn-danger mr-1 mb-2">{{store.store.name}} <fa-icon [icon]="[store.store.slug | iconGenerator:'prefix':'store', store.store.slug | iconGenerator:'logo':'store']"></fa-icon></button></a>
                     </dl>
-                    <hr>
                     <dl *ngIf="Game.genres[0]">
                         <h4>Genres <fa-icon [icon]="['fas', 'gamepad']"></fa-icon></h4>
                         <button *ngFor="let genre of Game.genres" type="button" class="btn btn-outline-warning mr-1">{{genre.name}}</button>
@@ -74,6 +75,15 @@
                         <h4>Website <fa-icon [icon]="['fas', 'external-link-alt']"></fa-icon></h4>
                         <dd><a href="{{Game.website}}" target="_blank">{{Game.website}}</a></dd>
                     </dl>
+                    <div class="container hand-cursor">
+                        <div class="row">
+                            <div class="col align-self-start"></div>
+                            <div class="col align-self-center"></div>
+                            <div class="col align-self-end">
+                                <button *ngIf="Game.clip" type="button" (click)="backToTop()" class="btn btn-dark">Back to top <fa-icon [icon]="['fas', 'chevron-circle-up']"></fa-icon></button>
+                            </div>
+                        </div>
+                    </div>
                 </article>
             </aside>
         </div>
