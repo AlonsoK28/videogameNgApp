@@ -8,7 +8,8 @@
                         <div class="input-group mb-3">
                             <input [ngModel]="searchTerm | slugToWord" (ngModelChange)="searchTerm = $event" name="searchTerm"
                                     type="text" class="form-control" id="search" aria-describedby="Enter your games here 🧐"
-                                    placeholder="Enter your games here 🧐" autocomplete="off" (keyup.enter)="searchGame()">
+                                    placeholder="Enter your games here 🧐" autocomplete="off" (keyup.enter)="searchGame()"
+                                    autofocus>
                             <div class="input-group-append hand-cursor" (click)="searchGame()">
                                 <span class="input-group-text">
                                     Search
