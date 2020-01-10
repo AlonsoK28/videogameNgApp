@@ -24,7 +24,7 @@
                         </div>
                         <div>
                             <h5 *ngIf="game.ratings">
-                                <button *ngFor="let rating of game.ratings;" type="button" class="btn btn-{{rating.title | ratingColor}} mr-1">{{rating.title | titlecase}} <span class="badge badge-light badge-pill">{{rating.percent | number:'1.0-0'}}%</span></button>
+                                <button *ngFor="let rating of game.ratings;" type="button" class="btn btn-{{rating.title | ratingColor}} mr-1 mb-1">{{rating.title | titlecase}} <span class="badge badge-light badge-pill">{{rating.percent | number:'1.0-0'}}%</span></button>
                                 <span class="divider pl-1 pr-1"></span>
                             </h5>
                         </div>
