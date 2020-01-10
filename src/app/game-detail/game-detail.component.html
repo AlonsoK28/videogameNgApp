@@ -1,7 +1,7 @@
 <div class="jumbotron mb-4" [ngStyle]="jumbotronBackgroudImage" *ngIf="!notFound && !loader">
     <div class="container">
         <div class="row text-center">
-            <h2 class="title-label">{{Game.name}} <span *ngIf="Game.publishers[0]" class="subtitle-label">by {{Game.publishers[0]?.name}}</span></h2>
+            <h2 class="title-label">{{Game.name}} <span *ngIf="Game.publishers[0]" class="subtitle-label">{{Game.publishers[0]?.name}}</span></h2>
         </div>
     </div>
 </div>
@@ -68,7 +68,7 @@
                     <hr>
                     <dl *ngIf="Game.genres[0]">
                         <h4>Genres <fa-icon [icon]="['fas', 'gamepad']"></fa-icon></h4>
-                        <button *ngFor="let genre of Game.genres" type="button" class="btn btn-outline-info mr-1">{{genre.name}}</button>
+                        <button *ngFor="let genre of Game.genres" type="button" class="btn btn-outline-warning mr-1">{{genre.name}}</button>
                     </dl>
                     <dl *ngIf="Game.website" class="param param-feature">
                         <h4>Website <fa-icon [icon]="['fas', 'external-link-alt']"></fa-icon></h4>
