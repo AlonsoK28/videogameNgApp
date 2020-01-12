@@ -70,6 +70,10 @@ export const platformLogo = {
             "logo": "laptop",
             "prefix": "fas"
         },
+        "linux":{
+            "logo": "laptop",
+            "prefix": "fas"
+        },
         "ios":{
             "logo": "apple",
             "prefix": "fab"
