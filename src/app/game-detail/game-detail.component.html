@@ -1,91 +1,137 @@
-<!-- todo https://startbootstrap.com/snippets/video-header/ -->
-<div class="jumbotron mb-4" [ngStyle]="jumbotronBackgroudImage" *ngIf="!notFound && !loader">
-    <div class="container">
-        <div class="row text-center">
-            <h2 class="title-label">{{Game.name}} <span *ngIf="Game.publishers[0]" class="subtitle-label">{{Game.publishers[0]?.name}}</span></h2>
+<div class="content-recieved" *ngIf="!notFound && !loader">
+    <!-- Boostrap  ivdeo header https://startbootstrap.com/snippets/video-header/ -->
+    <header [ngStyle]="jumbotronBackgroudImage" *ngIf="Game.clip" >
+        <div class="overlay"></div>
+        <video  controls loop autoplay onloadedmetadata="this.muted = true">
+            <source src="{{Game.clip.clip}}" type="video/mp4">
+        </video>
+        <div class="container h-100">
+            <div class="d-flex h-100 text-center align-items-center">
+                                <h2 class="title-label">{{Game.name}} <span *ngIf="Game.publishers[0]"
+                                        class="subtitle-label">{{Game.publishers[0]?.name}}</span></h2>
+
+            </div>
+        </div>
+    </header>
+    <div class="jumbotron" [ngStyle]="jumbotronBackgroudImage" *ngIf="!Game.clip">
+        <div class="container">
+            <div class="row text-left">
+                <h2 class="title-label">{{Game.name}} <span *ngIf="Game.publishers[0]"
+                        class="subtitle-label">{{Game.publishers[0]?.name}}</span></h2>
+            </div>
         </div>
     </div>
-</div>
-<!-- Boostrap detail https://bootsnipp.com/snippets/orOGB -->
-<div class="container mb-4 pl-0 pr-0" *ngIf="!notFound && !loader">
-    <button type="button" class="btn btn-primary mb-4" (click)="goBack()"><fa-icon [icon]="['fas', 'arrow-alt-circle-left']"></fa-icon> Back</button>
-    <div class="card fade-in pb-4">
-        <div class="row">
-            <aside class="col-sm-5 border-right pl-1">
-                <article class="gallery-wrap">
-                    <div class="img-big-wrap mt-3">
-                        <p class="text-center">Image <fa-icon [icon]="['fas', 'image']"></fa-icon></p>
-                        <img *ngIf="Game.background_image else noImageExist" [src]="Game.background_image" (click)="open(i)" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image" class="img-fluid item-gallery mx-auto d-block pl-4 hand-cursor">
-                        <ng-template #noImageExist><img *ngIf="!Game.background_image" src="{{noImage}}" class="img-fluid item-gallery mx-auto d-block"></ng-template>
-                    </div>
-                    <div class="img-small-wrap">
-                        <img *ngIf="Game.background_image_additional" [src]="Game.background_image_additional" (click)="open(i)" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image_additional" class="img-fluid item-gallery mx-auto d-block pl-4 pt-4 hand-cursor">
-                    </div> 
-                    <div *ngIf="Game.clip" class="img-small-wrap pl-3 pt-3 hand-cursor">
-                        <p class="text-center">Videoclip <fa-icon [icon]="['fab', 'youtube']"></fa-icon></p>
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" [src]="Game.clip.clip | domSanitizer:'Game.clip.clip'" allowfullscreen autoplay="off"></iframe>
+    <!-- Boostrap detail https://bootsnipp.com/snippets/orOGB -->
+    <div class="container mt-4 mb-4 pl-0 pr-0">
+        <button type="button" class="btn btn-primary mb-4" (click)="goBack()">
+            <fa-icon [icon]="['fas', 'arrow-alt-circle-left']"></fa-icon> Back
+        </button>
+        <div class="card fade-in pb-4">
+            <div class="row">
+                <aside class="col-sm-5 border-right pl-1">
+                    <article class="gallery-wrap">
+                        <div class="img-big-wrap mt-3">
+                            <p class="text-center">Image <fa-icon [icon]="['fas', 'image']"></fa-icon>
+                            </p>
+                            <img *ngIf="Game.background_image else noImageExist" [src]="Game.background_image"
+                                (click)="open(i)" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image"
+                                class="img-fluid item-gallery mx-auto d-block pl-4 hand-cursor">
+                            <ng-template #noImageExist><img *ngIf="!Game.background_image" src="{{noImage}}"
+                                    class="img-fluid item-gallery mx-auto d-block"></ng-template>
                         </div>
-                    </div> 
-                </article>
-            </aside>
-            <aside class="col-sm-7 pr-1">
-                <article class="card-body p-5">
-                    <h1 class="title mb-3 game-title">{{Game.name}}</h1>
-                    <p class="price-detail-wrap">
-                        <span class="price h3 text-warning align-middle">
-                            <span *ngFor="let platform of Game.platforms; let i = index; last as isLast;" class="currency">{{platform.platform.name}}<fa-icon [icon]="[platform.platform.slug | iconGenerator:'prefix':'platform', platform.platform.slug | iconGenerator:'logo':'platform']" class="fa-xs align-middle ml-2 mr-2"></fa-icon></span>
-                        </span>
-                        <span *ngIf="Game.esrb_rating" class="pl-1"><span class="badge badge-dark">{{Game.esrb_rating.name}} <fa-icon [icon]="['fas', 'user']"></fa-icon></span></span>
-                    </p>
-                    <dl *ngIf="Game.ratings[0]">
-                        <h4>Reactions <fa-icon [icon]="['fas', 'grin-tongue-wink']"></fa-icon>
-                        </h4>
-                        <dd>
-                            <button *ngFor="let rating of Game.ratings;" type="button" class="btn btn-{{rating.title | ratingColor}} mr-1">{{rating.title | titlecase}} <span class="badge badge-light badge-pill">{{rating.percent | number:'1.0-0'}}%</span></button><span class="divider pl-1 pr-1"></span>
-                            <span class="divider pl-1 pr-1"></span>
-                        </dd>
-                    </dl>
-                    <dl *ngIf="Game.rating && Game.released">
-                        <dd>
-                            <div>
-                                <span *ngIf="Game.reviews_count">({{Game.reviews_count}})</span>
-                                <span *ngIf="Game.rating"><star-rating value="{{Game.rating}}" totalstars="5" checkedcolor="yellow" uncheckedcolor="gray" size="24px" readonly="true"></star-rating></span>
-                                <span *ngIf="Game.released">Released <fa-icon [icon]="['fas', 'calendar-alt']"></fa-icon> {{Game.released}}</span>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl *ngIf="Game.description_raw">
-                        <hr class="bg-white">
-                        <h4>Description <fa-icon [icon]="['fas', 'info-circle']"></fa-icon></h4>
-                        <dd>
-                            <section class="description-elipsis">{{Game.description_raw | htmlToText}}</section>
-                        </dd>
-                        <hr class="bg-white">
-                    </dl>
-                    <dl *ngIf="Game.stores[0]">
-                        <h4>Buy now <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon></h4>
-                        <a *ngFor="let store of Game.stores" href="{{store.url}}" target="_blank"><button type="button" class="btn btn-danger mr-1 mb-2">{{store.store.name}} <fa-icon [icon]="[store.store.slug | iconGenerator:'prefix':'store', store.store.slug | iconGenerator:'logo':'store']"></fa-icon></button></a>
-                    </dl>
-                    <dl *ngIf="Game.genres[0]">
-                        <h4>Genres <fa-icon [icon]="['fas', 'gamepad']"></fa-icon></h4>
-                        <button *ngFor="let genre of Game.genres" type="button" class="btn btn-outline-warning mr-1">{{genre.name}}</button>
-                    </dl>
-                    <dl *ngIf="Game.website" class="param param-feature">
-                        <h4>Website <fa-icon [icon]="['fas', 'external-link-alt']"></fa-icon></h4>
-                        <dd><a href="{{Game.website}}" target="_blank">{{Game.website}}</a></dd>
-                    </dl>
-                    <div class="container hand-cursor">
-                        <div class="row">
-                            <div class="col align-self-start"></div>
-                            <div class="col align-self-center"></div>
-                            <div class="col align-self-end">
-                                <button *ngIf="Game.clip" type="button" (click)="backToTop()" class="btn btn-dark">Back to top <fa-icon [icon]="['fas', 'chevron-circle-up']"></fa-icon></button>
+                        <div class="img-small-wrap">
+                            <img *ngIf="Game.background_image_additional" [src]="Game.background_image_additional"
+                                (click)="open(i)" [defaultImage]="defaultImage"
+                                [lazyLoad]="Game.background_image_additional"
+                                class="img-fluid item-gallery mx-auto d-block pl-4 pt-4 hand-cursor">
+                        </div>
+                        <div *ngIf="Game.clip" class="img-small-wrap pl-3 pt-3 hand-cursor">
+                            <p class="text-center">Videoclip <fa-icon [icon]="['fab', 'youtube']"></fa-icon></p>
+                                <video controls loop allowfullscreen class="embed-responsive embed-responsive-16by9">
+                                    <source src="{{Game.clip.clip}}" type="video/mp4" class="embed-responsive-item">
+                                </video>
+                        </div>
+                    </article>
+                </aside>
+                <aside class="col-sm-7 pr-1">
+                    <article class="card-body p-5">
+                        <h1 class="title mb-3 game-title">{{Game.name}}</h1>
+                        <p class="price-detail-wrap">
+                            <span class="price h3 text-warning align-middle">
+                                <span *ngFor="let platform of Game.platforms; let i = index; last as isLast;"
+                                    class="currency">{{platform.platform.name}}<fa-icon
+                                        [icon]="[platform.platform.slug | iconGenerator:'prefix':'platform', platform.platform.slug | iconGenerator:'logo':'platform']"
+                                        class="fa-xs align-middle ml-2 mr-2"></fa-icon></span>
+                            </span>
+                            <span *ngIf="Game.esrb_rating" class="pl-1"><span
+                                    class="badge badge-dark">{{Game.esrb_rating.name}} <fa-icon [icon]="['fas', 'user']">
+                                    </fa-icon></span></span>
+                        </p>
+                        <dl *ngIf="Game.ratings[0]">
+                            <h4>Reactions <fa-icon [icon]="['fas', 'grin-tongue-wink']"></fa-icon>
+                            </h4>
+                            <dd>
+                                <button *ngFor="let rating of Game.ratings; odd as isOdd;" type="button" [ngClass]="{'mr-1 ml-1' : isOdd}" class="btn btn-{{rating.title | ratingColor}} mb-1">{{rating.title | titlecase}} <span class="badge badge-light badge-pill">{{rating.percent | number:'1.0-0'}}%</span></button>
+                            </dd>
+                        </dl>
+                        <dl *ngIf="Game.rating && Game.released">
+                            <dd>
+                                <div>
+                                    <span *ngIf="Game.reviews_count">({{Game.reviews_count}})</span>
+                                    <span *ngIf="Game.rating">
+                                        <star-rating value="{{Game.rating}}" totalstars="5" checkedcolor="yellow"
+                                            uncheckedcolor="gray" size="24px" readonly="true"></star-rating>
+                                    </span>
+                                    <span *ngIf="Game.released">Released <fa-icon [icon]="['fas', 'calendar-alt']">
+                                        </fa-icon> {{Game.released}}</span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl *ngIf="Game.description_raw">
+                            <hr class="bg-white">
+                            <h4>Description <fa-icon [icon]="['fas', 'info-circle']"></fa-icon>
+                            </h4>
+                            <dd>
+                                <section class="description-elipsis">{{Game.description_raw | htmlToText}}</section>
+                            </dd>
+                            <hr class="bg-white">
+                        </dl>
+                        <dl *ngIf="Game.stores[0]">
+                            <h4>Buy now <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+                            </h4>
+                            <a *ngFor="let store of Game.stores" href="{{store.url}}" target="_blank"><button type="button"
+                                    class="btn btn-danger mr-1 mb-2">{{store.store.name}} <fa-icon
+                                        [icon]="[store.store.slug | iconGenerator:'prefix':'store', store.store.slug | iconGenerator:'logo':'store']">
+                                    </fa-icon></button></a>
+                        </dl>
+                        <dl *ngIf="Game.genres[0]">
+                            <h4>Genres <fa-icon [icon]="['fas', 'gamepad']"></fa-icon>
+                            </h4>
+                            <button *ngFor="let genre of Game.genres" type="button"
+                                class="btn btn-outline-warning mr-1">{{genre.name}}</button>
+                        </dl>
+                        <dl *ngIf="Game.website" class="param param-feature">
+                            <h4>Website <fa-icon [icon]="['fas', 'external-link-alt']"></fa-icon>
+                            </h4>
+                            <dd>
+                                <h6 class="text-truncate">
+                                    <a href="{{Game.website}}" target="_blank">{{Game.website}}</a>
+                                </h6>
+                            </dd>
+                        </dl>
+                        <div class="container hand-cursor">
+                            <div class="row">
+                                <div class="col align-self-start"></div>
+                                <div class="col align-self-center"></div>
+                                <div class="col align-self-end">
+                                    <button *ngIf="Game.clip" type="button" (click)="backToTop()" class="btn btn-dark">Back
+                                        to top <fa-icon [icon]="['fas', 'chevron-circle-up']"></fa-icon></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </article>
-            </aside>
+                    </article>
+                </aside>
+            </div>
         </div>
     </div>
 </div>
