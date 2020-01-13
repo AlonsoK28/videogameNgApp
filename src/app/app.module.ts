@@ -38,7 +38,7 @@ import {  faCircleNotch,
           faTimes, faCheckCircle, faArrowCircleLeft, faArrowAltCircleLeft,faInfoCircle, faBackspace, 
           faFont, faPaperclip,faShoppingBasket,faStarHalfAlt,faExternalLinkAlt,faCalendarAlt,
           faGrinTongueWink,faImage,faUser, faGamepad, faHeart, faShoppingCart,faDice,faLaptop,
-          faChevronCircleUp
+          faChevronCircleUp, faTrophy
         } from '@fortawesome/free-solid-svg-icons';
 import {  faAngular,faYoutube,faXbox,faPlaystation,faJsSquare,faNodeJs,faCss3Alt,faSteam, faHtml5,
           faApple,faAppStoreIos,faAndroid,faGooglePlay,faChrome, faBootstrap
@@ -90,6 +90,6 @@ export class AppModule {
       faPaperclip,faShoppingBasket,faStarHalfAlt,faExternalLinkAlt,faCalendarAlt,faGrinTongueWink,
       faYoutube,faImage,faUser,faGamepad,faHeart,faShoppingCart,faXbox,faPlaystation,faJsSquare,
       faNodeJs,faCss3Alt,faArrowAltCircleLeft,faSteam,faDice,faHtml5,faLaptop,faApple,faAppStoreIos,
-      faAndroid, faGooglePlay, faChrome, faBootstrap, faChevronCircleUp );  
+      faAndroid, faGooglePlay, faChrome, faBootstrap, faChevronCircleUp, faTrophy );  
   }
 }
