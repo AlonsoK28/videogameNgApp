@@ -26,6 +26,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.12.0",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "core-js": "^2.6.11",
+    "express": "^4.17.1",
     "ng-lazyload-image": "^7.0.1",
     "ng-starrating": "^1.0.11",
     "ngx-lightbox": "^2.1.1",
