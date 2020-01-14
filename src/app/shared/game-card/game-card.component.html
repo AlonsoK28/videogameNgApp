@@ -1,5 +1,5 @@
 <!-- Boostrap template card https://codepen.io/cristinaconacel/pen/NOYoGX -->
-<div class="container productos-card" *ngIf="Games.length > 0">
+<div class="container productos-card" *ngIf="Games">
     <div class="row">
         <div class="card-columns">
             <a *ngFor="let game of Games;" routerLink="/game-detail/{{ game.slug }}" class="fade-in">    

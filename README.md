@@ -1,8 +1,7 @@
-# spring-ng-app
+# videogameNgApp
 
 ## This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.
-## Has as mission represent the management of diferent type of products
-## The service layers is provided for an API REST Spring Framework service based
+## This app allows to browser into RAWG Video Games Database API (v1.0) 
 
 # techniques and paradigms used
 
@@ -13,8 +12,7 @@
 ### For validate data IO for user interaction
 
 ## ng-service
-### Also this app consumes a API REST Spring Framework service
+### Also this app consumes the RAWG Video Games Database API (v1.0)
 
 # Contributors
 ## Ing. C Alonso C Ortega [@AlonsoK28](https://github.com/AlonsoK28)
-## Mtro. en Admon. Miguel Canche
