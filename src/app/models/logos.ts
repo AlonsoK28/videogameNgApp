@@ -1,3 +1,8 @@
+/**
+* Define Store prefix and nameIcon for display Fontawesome Icon
+* @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+*/
+
 export const storeLogo = {
         "playstation-store":{
             "logo": "playstation",
@@ -29,6 +34,10 @@ export const storeLogo = {
         }
 };
 
+/**
+* Define platform prefix and nameIcon for display Fontawesome Icon
+* @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+*/
 export const platformLogo = {
         "playstation":{
             "logo": "playstation",

@@ -15,6 +15,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+  * Get search term from submit field
+  * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+  */
   searchGame(searchTerm: string){
     if(searchTerm.trim().length == 0){
       return;
@@ -23,6 +27,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate([`game-search/`, wordToSlug.transform(searchTerm)]);
   }
 
+  /**
+  * Used to change Boostrap 4 theme
+  * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+  */
   switchTheme() {
     const $theme = this._document.getElementById("theme");
     const $switch = this._document.getElementById("customSwitch1");

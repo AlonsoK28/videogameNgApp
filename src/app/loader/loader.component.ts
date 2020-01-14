@@ -18,8 +18,6 @@ export class LoaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log("loader: ", this.loader);
-    // console.log("sinResultados: ", this.sinResultados);
   }
 
 }

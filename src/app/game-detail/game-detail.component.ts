@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { httpError } from '../httpError';
+import { httpError } from '../models/httpError';
 import { GameRestApiService } from '../services/game-rest-api.service';
 import { Lightbox } from 'ngx-lightbox';
 import { Location } from '@angular/common';
@@ -52,6 +52,12 @@ export class GameDetailComponent implements OnInit {
     this.gameDetail();
   }
 
+  /**
+   * Get detail  of a Game.
+  * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+  * @http https://api.rawg.io/docs/#operation/games_read
+  * @return Game
+  */
   gameDetail(){
     return this.gameRestApi.getGameDetail(this.slug).subscribe(
       //next  
@@ -75,6 +81,10 @@ export class GameDetailComponent implements OnInit {
     );
   }
 
+  /**
+  * Validate if is present, if not, a fallback image is setted
+  * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+  */
   loadjumbotronBackgroudImage(){
     if (this.Game.background_image) {
       this.jumbotronBackgroudImage = {
@@ -88,6 +98,10 @@ export class GameDetailComponent implements OnInit {
     }
   }
 
+  /**
+  * Add background image API provided to Lightbox album
+  * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+  */
   loadLigthboxImages(){
     const backgroundImage = this.Game.background_image; 
     const backgroundImageAditional = this.Game.background_image_additional; 
@@ -110,10 +124,18 @@ export class GameDetailComponent implements OnInit {
     }
   }
 
+  /**
+  * Use browser location to go back in user navigation flow
+  * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+  */
   goBack(){
     this._location.back();
   }
 
+  /**
+  * When is presed scroll to top of page
+  * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+  */
   backToTop() {
     (function smoothscroll() {
       var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;

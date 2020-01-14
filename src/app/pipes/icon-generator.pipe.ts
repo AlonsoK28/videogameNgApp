@@ -1,6 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { platformLogo as platform, storeLogo as store } from '../models/logos';
 
+/**
+* Define platform prefix and nameIcon for display Fontawesome Icon
+* @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+*/
 @Pipe({
   name: 'iconGenerator'
 })

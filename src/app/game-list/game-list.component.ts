@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameRestApiService } from '../services/game-rest-api.service';
 import { GameAPI } from '../models/games';
-import { httpError } from '../httpError';
+import { httpError } from '../models/httpError';
 
 @Component({
   selector: 'app-game-list',
@@ -24,9 +24,10 @@ export class GameListComponent implements OnInit {
     this.gameList();
   }
   /**
-   * Get the x value.
-   * @return {number} The x value.
-   * @autor Carlos Alonso Casales Ortega
+   * Get a list of Games by Platform.
+   * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+   * @http https://api.rawg.io/docs/#tag/games
+   * @return [Games]
    */
   gameList(platform?:string) {
     this.loader = true;

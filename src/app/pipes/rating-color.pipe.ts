@@ -1,6 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ratingColorTone as colorTone } from '../models/colors';
 
+/**
+* Define rating color for display in Bootstrap 4 button
+* @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+*/
 @Pipe({
   name: 'ratingColor'
 })

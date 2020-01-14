@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductosRestApiService } from '../services/productos-rest-api.service';
 import { GameAPI } from '../models/games';
 import { ActivatedRoute } from '@angular/router';
 import { GameRestApiService } from '../services/game-rest-api.service';
-import { httpError } from '../httpError';
+import { httpError } from '../models/httpError';
 @Component({
   selector: 'app-game-search',
   templateUrl: './game-search.component.html',
@@ -34,6 +33,10 @@ export class GameSearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+  * Validate if searchTerm is present into user navigation flow
+  * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+  */
   searchGame(){
     this.noResults = false;
     if(this.searchTerm.length == 0){
@@ -44,6 +47,12 @@ export class GameSearchComponent implements OnInit {
     }
   }
 
+  /**
+   * Get a list of Games by search term.
+   * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
+   * @http https://api.rawg.io/docs/#tag/games
+   * @return [Games]
+   */
   gameList(){
     this.loader = true;
     this.noResults = false;
