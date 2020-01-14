@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GameDetailAPI } from '../models/games';
 import { httpError } from '../httpError';
 import { GameRestApiService } from '../services/game-rest-api.service';
 import { Lightbox } from 'ngx-lightbox';

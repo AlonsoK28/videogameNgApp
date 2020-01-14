@@ -23,7 +23,11 @@ export class GameListComponent implements OnInit {
   ngOnInit() {
     this.gameList();
   }
-
+  /**
+   * Get the x value.
+   * @return {number} The x value.
+   * @autor Carlos Alonso Casales Ortega
+   */
   gameList(platform?:string) {
     this.loader = true;
     this.noResults = false;

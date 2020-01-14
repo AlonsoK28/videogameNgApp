@@ -7,13 +7,8 @@ import { AppComponent } from './app.component';
 //components
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NavbarComponent } from './navbar/navbar.component';
-import { ProductosComponent } from './productos/productos.component';
-import { ProductoDetalleComponent } from './producto-detalle/producto-detalle.component';
-import { ProductoNuevoComponent } from './producto-nuevo/producto-nuevo.component';
 import { LoaderComponent } from './loader/loader.component';
 import { FooterComponent } from './footer/footer.component';
-import { ProductosCardComponent } from './template/productos-card/productos-card.component';
-import { ProductoBusquedaComponent } from './producto-busqueda/producto-busqueda.component';
 import { GameSearchComponent } from './game-search/game-search.component';
 import { GameCardComponent } from './shared/game-card/game-card.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
@@ -47,13 +42,8 @@ import {  faAngular,faYoutube,faXbox,faPlaystation,faJsSquare,faNodeJs,faCss3Alt
   declarations: [
     AppComponent,
     NavbarComponent,
-    ProductosComponent,
-    ProductoDetalleComponent,
-    ProductoNuevoComponent,
     LoaderComponent,
     FooterComponent,
-    ProductosCardComponent,
-    ProductoBusquedaComponent,
     WordToSlugPipe,
     SlugToWordPipe,
     GameSearchComponent,
