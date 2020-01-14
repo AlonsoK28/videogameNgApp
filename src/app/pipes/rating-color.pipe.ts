@@ -12,6 +12,6 @@ export class RatingColorPipe implements PipeTransform {
       return colorTone[ratingName].colorName;
     } else {
       return colorTone.other.colorName;
-    }  }
-
+    }  
+  }
 }

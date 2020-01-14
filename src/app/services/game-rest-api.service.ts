@@ -61,7 +61,7 @@ export class GameRestApiService {
   * @autor Carlos Alonso Casales Ortega
   */
   getGameList(query: string): Observable<GameAPI[]> {
-    return this.http.get<GameAPI>(`${this.apiURL}/games?publishers=electronic-arts,microsoft-studios&page_size=50`)
+    return this.http.get<GameAPI>(`${this.apiURL}/games?${query}&page_size=50`)
       .pipe(
         tap(console.log),
         map((res) => {

@@ -11,10 +11,12 @@ import { httpError } from '../httpError';
 export class GameListComponent implements OnInit {
   loader: boolean = false;
   noResults: boolean = false;
+  results: boolean = false;
   httpErrorCode: number;
   httpErrorMessage: string;
   query:string;
   Games:GameAPI[] = [];
+  platformSelected:string;
   
   constructor(private gameRestApi: GameRestApiService) { }
 
@@ -22,18 +24,25 @@ export class GameListComponent implements OnInit {
     this.gameList();
   }
 
-  gameList() {
+  gameList(platform?:string) {
     this.loader = true;
     this.noResults = false;
-    this.query = "page_size&platforms=playstation";
+    this.results = false;
+    this.query = "&search=";
+    if (platform){
+      this.query = `&search=${platform}`;
+      this.platformSelected = platform;
+    }
     return this.gameRestApi.getGameList(this.query).subscribe(
       //next
       data => {
         this.Games = data;
-        this.loader = false;
         if (!data.length) {
           this.noResults = true;
+        }else{
+          this.results = true;
         }
+        this.loader = false;
       },
       //error
       (err: httpError) => {

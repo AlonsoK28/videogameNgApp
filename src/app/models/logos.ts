@@ -58,6 +58,10 @@ export const platformLogo = {
             "logo": "playstation",
             "prefix": "fab"
         },
+        "xbox":{
+            "logo": "xbox",
+            "prefix": "fab"
+        },
         "xbox360":{
             "logo": "xbox",
             "prefix": "fab"
