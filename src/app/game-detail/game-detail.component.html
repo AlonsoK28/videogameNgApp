@@ -1,4 +1,4 @@
-<div class="content-recieved" *ngIf="!notFound && !loader">
+<div class="content-recieved container-fluid pl-0 pr-0" *ngIf="!notFound && !loader">
     <!-- Boostrap  ivdeo header https://startbootstrap.com/snippets/video-header/ -->
     <header [ngStyle]="jumbotronBackgroudImage" *ngIf="Game.clip" >
         <div class="overlay"></div>
@@ -7,9 +7,8 @@
         </video>
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
-                                <h2 class="title-label">{{Game.name}} <span *ngIf="Game.publishers[0]"
-                                        class="subtitle-label">{{Game.publishers[0]?.name}}</span></h2>
-
+                <h2 class="title-label d-none d-sm-block">{{Game.name}} <span *ngIf="Game.publishers[0]" class="subtitle-label">{{Game.publishers[0]?.name}}</span></h2>
+                <h3 class="title-label d-sm-none">{{Game.name}} <span *ngIf="Game.publishers[0]"class="subtitle-label">{{Game.publishers[0]?.name}}</span></h3>
             </div>
         </div>
     </header>
@@ -26,7 +25,7 @@
         <button type="button" class="btn btn-primary mb-4" (click)="goBack()">
             <fa-icon [icon]="['fas', 'arrow-alt-circle-left']"></fa-icon> Back
         </button>
-        <div class="card fade-in pb-4">
+        <div class="card fade-in">
             <div class="row">
                 <aside class="col-sm-5 border-right pl-1">
                     <article class="gallery-wrap">
@@ -35,7 +34,7 @@
                             </p>
                             <img *ngIf="Game.background_image else noImageExist" [src]="Game.background_image"
                                 (click)="open(i)" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image"
-                                class="img-fluid item-gallery mx-auto d-block pl-4 hand-cursor">
+                                class="img-fluid item-gallery mx-auto d-block pl-4 pr-2 hand-cursor">
                             <ng-template #noImageExist><img *ngIf="!Game.background_image" src="{{noImage}}"
                                     class="img-fluid item-gallery mx-auto d-block"></ng-template>
                         </div>
@@ -43,9 +42,9 @@
                             <img *ngIf="Game.background_image_additional" [src]="Game.background_image_additional"
                                 (click)="open(i)" [defaultImage]="defaultImage"
                                 [lazyLoad]="Game.background_image_additional"
-                                class="img-fluid item-gallery mx-auto d-block pl-4 pt-4 hand-cursor">
+                                class="img-fluid item-gallery mx-auto d-block pl-4 pr-2 pt-4 hand-cursor">
                         </div>
-                        <div *ngIf="Game.clip" class="img-small-wrap pl-3 pt-3 hand-cursor">
+                        <div *ngIf="Game.clip" class="img-small-wrap pl-4 pr-2 pt-3 hand-cursor">
                             <p class="text-center">Videoclip <fa-icon [icon]="['fab', 'youtube']"></fa-icon></p>
                                 <video controls loop allowfullscreen class="embed-responsive embed-responsive-16by9">
                                     <source src="{{Game.clip.clip}}" type="video/mp4" class="embed-responsive-item">
@@ -55,23 +54,29 @@
                 </aside>
                 <aside class="col-sm-7 pr-1">
                     <article class="card-body p-5">
-                        <h1 class="title mb-3 game-title">{{Game.name}}</h1>
+                        <h1 class="title mb-3 game-title d-none d-sm-block">{{Game.name}}</h1>
+                        <h2 class="title mb-3 game-title d-sm-none">{{Game.name}}</h2>
                         <p class="price-detail-wrap">
-                            <span class="price h3 text-warning align-middle">
+                            <span class="price h3 text-warning align-middle d-none d-sm-block">
                                 <span *ngFor="let platform of Game.platforms; let i = index; last as isLast;"
                                     class="currency">{{platform.platform.name}}<fa-icon
                                         [icon]="[platform.platform.slug | iconGenerator:'prefix':'platform', platform.platform.slug | iconGenerator:'logo':'platform']"
                                         class="fa-xs align-middle ml-2 mr-2"></fa-icon></span>
+                                        <span *ngIf="Game.esrb_rating" class="pl-1 h6 align-middle"><span class="badge badge-dark">{{Game.esrb_rating.name}} <fa-icon [icon]="['fas', 'user']"></fa-icon></span></span>
                             </span>
-                            <span *ngIf="Game.esrb_rating" class="pl-1"><span
-                                    class="badge badge-dark">{{Game.esrb_rating.name}} <fa-icon [icon]="['fas', 'user']">
-                                    </fa-icon></span></span>
+                            <span class="price h4 text-warning align-middle d-sm-none">
+                                <span *ngFor="let platform of Game.platforms; let i = index; last as isLast;"
+                                    class="currency">{{platform.platform.name}}<fa-icon
+                                        [icon]="[platform.platform.slug | iconGenerator:'prefix':'platform', platform.platform.slug | iconGenerator:'logo':'platform']"
+                                        class="fa-xs align-middle ml-2 mr-2"></fa-icon></span>
+                                        <span *ngIf="Game.esrb_rating" class="pl-1 h6 align-middle"><span class="badge badge-dark">{{Game.esrb_rating.name}}<fa-icon [icon]="['fas', 'user']"></fa-icon></span></span>
+                            </span>
                         </p>
                         <dl *ngIf="Game.ratings[0]">
                             <h4>Reactions <fa-icon [icon]="['fas', 'grin-tongue-wink']"></fa-icon>
                             </h4>
                             <dd>
-                                <button *ngFor="let rating of Game.ratings; odd as isOdd;" type="button" [ngClass]="{'mr-1 ml-1' : isOdd}" class="btn btn-{{rating.title | ratingColor}} mb-1">{{rating.title | titlecase}} <span class="badge badge-light badge-pill">{{rating.percent | number:'1.0-0'}}%</span></button>
+                                <button *ngFor="let rating of Game.ratings; odd as isOdd;" type="button" [ngClass]="{'mr-1 ml-1' : isOdd}" class="btn btn-{{rating.title | ratingColor}} mb-1" data-toggle="tooltip" data-placement="top" title="" [attr.data-original-title]="rating.count + ' users vote this reaction'" onmouseenter="$(this).tooltip('show')">{{rating.title | titlecase}} <span class="badge badge-light badge-pill">{{rating.percent | number:'1.0-0'}}%</span></button>
                             </dd>
                         </dl>
                         <dl *ngIf="Game.rating && Game.released">
