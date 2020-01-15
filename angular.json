@@ -28,8 +28,8 @@
             ],
             "scripts": [
               "src/assets/jquery/jquery.min.js",
-              "src/assets/bootstrap/bootstrap.min.js",
-              "src/assets/bootstrap/popper.min.js"
+              "src/assets/bootstrap/popper.min.js",
+              "src/assets/bootstrap/bootstrap.min.js"
 
             ],
             "es5BrowserSupport": true
