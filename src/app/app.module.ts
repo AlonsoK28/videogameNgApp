@@ -33,10 +33,10 @@ import {  faCircleNotch,
           faTimes, faCheckCircle, faArrowCircleLeft, faArrowAltCircleLeft,faInfoCircle, faBackspace, 
           faFont, faPaperclip,faShoppingBasket,faStarHalfAlt,faExternalLinkAlt,faCalendarAlt,
           faGrinTongueWink,faImage,faUser, faGamepad, faHeart, faShoppingCart,faDice,faLaptop,
-          faChevronCircleUp, faTrophy
+          faChevronCircleUp, faTrophy, faDatabase
         } from '@fortawesome/free-solid-svg-icons';
 import {  faAngular,faYoutube,faXbox,faPlaystation,faJsSquare,faNodeJs,faCss3Alt,faSteam, faHtml5,
-          faApple,faAppStoreIos,faAndroid,faGooglePlay,faChrome, faBootstrap
+          faApple,faAppStoreIos,faAndroid,faGooglePlay,faChrome, faBootstrap, faFontAwesome
         } from '@fortawesome/free-brands-svg-icons';
 @NgModule({
   declarations: [
@@ -80,6 +80,6 @@ export class AppModule {
       faPaperclip,faShoppingBasket,faStarHalfAlt,faExternalLinkAlt,faCalendarAlt,faGrinTongueWink,
       faYoutube,faImage,faUser,faGamepad,faHeart,faShoppingCart,faXbox,faPlaystation,faJsSquare,
       faNodeJs,faCss3Alt,faArrowAltCircleLeft,faSteam,faDice,faHtml5,faLaptop,faApple,faAppStoreIos,
-      faAndroid, faGooglePlay, faChrome, faBootstrap, faChevronCircleUp, faTrophy );  
+      faAndroid, faGooglePlay, faChrome, faBootstrap, faChevronCircleUp, faTrophy, faFontAwesome, faDatabase );  
   }
 }
