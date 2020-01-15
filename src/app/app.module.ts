@@ -14,6 +14,7 @@ import { GameCardComponent } from './shared/game-card/game-card.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { GameLoaderComponent } from './game-loader/game-loader.component';
 import { GameListComponent } from './game-list/game-list.component';
+import { BackToTopComponent } from './shared/back-to-top/back-to-top.component';
 
 //pipes
 import { WordToSlugPipe } from './pipes/word-to-slug.pipe';
@@ -54,7 +55,8 @@ import {  faAngular,faYoutube,faXbox,faPlaystation,faJsSquare,faNodeJs,faCss3Alt
     DomSanitizerPipe,
     IconGeneratorPipe,
     RatingColorPipe,
-    GameListComponent
+    GameListComponent,
+    BackToTopComponent
   ],
   imports: [
     BrowserModule,

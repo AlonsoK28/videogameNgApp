@@ -119,16 +119,7 @@
                                 </h6>
                             </dd>
                         </dl>
-                        <div class="container hand-cursor">
-                            <div class="row">
-                                <div class="col align-self-start"></div>
-                                <div class="col align-self-center"></div>
-                                <div class="col align-self-end">
-                                    <button *ngIf="Game.clip" type="button" (click)="backToTop()" class="btn btn-dark">Back
-                                        to top <fa-icon [icon]="['fas', 'chevron-circle-up']"></fa-icon></button>
-                                </div>
-                            </div>
-                        </div>
+                        <app-back-to-top *ngIf="Game.clip"></app-back-to-top>
                     </article>
                 </aside>
             </div>
