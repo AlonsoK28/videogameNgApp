@@ -14,6 +14,7 @@ export class GameSearchComponent implements OnInit {
   searchTerm:string = "";
   searchTemplate:boolean = true;  
   loader:boolean = false;
+  results:boolean = false;
   noResults:boolean = false;
   httpErrorCode: number;
   httpErrorMessage: string;
@@ -56,14 +57,17 @@ export class GameSearchComponent implements OnInit {
   gameList(){
     this.loader = true;
     this.noResults = false;
+    this.results = false;
     return this.gameRestApi.getGameSearch(this.searchTerm).subscribe(
         //next
       data => { 
         this.Games = data;
-        this.loader = false;
-        if (!data.length){
+        if (!data.length) {
           this.noResults = true;
+        } else {
+          this.results = true;
         }
+        this.loader = false;
       },
       //error
       (err: httpError) => {
