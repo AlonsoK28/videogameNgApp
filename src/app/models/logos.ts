@@ -67,7 +67,7 @@ export const platformLogo = {
             "logo": "playstation",
             "prefix": "fab"
         },
-        "xbox":{
+        "xbox-old":{
             "logo": "xbox",
             "prefix": "fab"
         },
@@ -136,6 +136,10 @@ export const platformLogo = {
             "prefix": "fas"
         },
         "nintendo-64":{
+            "logo": "gamepad",
+            "prefix": "fas"
+        },
+        "game-boy-advance":{
             "logo": "gamepad",
             "prefix": "fas"
         },
