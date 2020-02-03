@@ -35,10 +35,11 @@ import {  faCircleNotch,
           faFont, faPaperclip,faShoppingBasket,faStarHalfAlt,faExternalLinkAlt,faCalendarAlt,
           faGrinTongueWink,faImage,faUser, faGamepad, faHeart, faShoppingCart,faDice,faLaptop,
           faChevronCircleUp, faTrophy, faDatabase
-        } from '@fortawesome/free-solid-svg-icons';
+        } from '@fortawesome/free-solid-svg-icons'; //fas
 import {  faAngular,faYoutube,faXbox,faPlaystation,faJsSquare,faNodeJs,faCss3Alt,faSteam, faHtml5,
           faApple,faAppStoreIos,faAndroid,faGooglePlay,faChrome, faBootstrap, faFontAwesome
-        } from '@fortawesome/free-brands-svg-icons';
+        } from '@fortawesome/free-brands-svg-icons'; //fab
+import { faSun, faMoon } from '@fortawesome/free-regular-svg-icons'; //far
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +83,7 @@ export class AppModule {
       faPaperclip,faShoppingBasket,faStarHalfAlt,faExternalLinkAlt,faCalendarAlt,faGrinTongueWink,
       faYoutube,faImage,faUser,faGamepad,faHeart,faShoppingCart,faXbox,faPlaystation,faJsSquare,
       faNodeJs,faCss3Alt,faArrowAltCircleLeft,faSteam,faDice,faHtml5,faLaptop,faApple,faAppStoreIos,
-      faAndroid, faGooglePlay, faChrome, faBootstrap, faChevronCircleUp, faTrophy, faFontAwesome, faDatabase );  
+      faAndroid, faGooglePlay, faChrome, faBootstrap, faChevronCircleUp, faTrophy, faFontAwesome, faDatabase,
+      faSun, faMoon );  
   }
 }

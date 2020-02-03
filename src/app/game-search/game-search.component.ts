@@ -3,6 +3,9 @@ import { GameAPI } from '../models/games';
 import { ActivatedRoute } from '@angular/router';
 import { GameRestApiService } from '../services/game-rest-api.service';
 import { httpError } from '../models/httpError';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+declare var $: any;
+
 @Component({
   selector: 'app-game-search',
   templateUrl: './game-search.component.html',
@@ -11,13 +14,15 @@ import { httpError } from '../models/httpError';
 export class GameSearchComponent implements OnInit {
 
   Games: GameAPI[] = [];
-  searchTerm:string = "";
+  searchTerm:string;
   searchTemplate:boolean = true;  
   loader:boolean = false;
   results:boolean = false;
   noResults:boolean = false;
   httpErrorCode: number;
   httpErrorMessage: string;
+  searchForm: FormGroup;
+  searchTermFieldControl: any;
 
   constructor(private gameRestApi: GameRestApiService,
               private route: ActivatedRoute ) { 
@@ -29,9 +34,15 @@ export class GameSearchComponent implements OnInit {
       }
     });
 
+    this.searchForm = new FormGroup({
+      'searchTermField': new FormControl(this.searchTerm, [Validators.required])
+    });
+    this.searchTermFieldControl = this.searchForm.controls.searchTermField;
+
   }
 
   ngOnInit() {
+    $('#search').tooltip('hide');
   }
 
   /**
@@ -39,13 +50,15 @@ export class GameSearchComponent implements OnInit {
   * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
   */
   searchGame(){
-    this.noResults = false;
-    if(this.searchTerm.length == 0){
-      return;
-    }else{
+    if (this.searchForm.valid) {
+      $('#search').tooltip('hide');
+      this.noResults = false;
       this.searchTemplate = false;
       this.gameList();
+    }else{
+      $('#search').tooltip('show');
     }
+
   }
 
   /**
@@ -80,6 +93,10 @@ export class GameSearchComponent implements OnInit {
         console.info("Data correctly recieved by Observer ✔️");
       }
     );
+  }
+
+  emptySearchTerm(){
+    this.searchForm.reset();
   }
 
 }

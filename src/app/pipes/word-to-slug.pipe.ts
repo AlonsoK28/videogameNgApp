@@ -6,8 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class WordToSlugPipe implements PipeTransform {
 
   transform(value: any): string {
-    value = value.trim().replace(/ /g, "-").toLowerCase();
-    return value;
+    if(value){
+      value = value.trim().replace(/ /g, "-").toLowerCase();
+      return value;
+    }
   }
 
 }

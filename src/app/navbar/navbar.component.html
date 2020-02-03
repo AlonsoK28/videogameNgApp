@@ -28,23 +28,20 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav link">
+        <a class="nav link" (click)="switchTheme()">
           <button type="button" class="btn btn-secondary">
-            <div class="custom-control custom-switch">
-              <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="true" (click)="switchTheme()">
-              <label class="custom-control-label cursor-hand" for="customSwitch1" id="customSwitch1label">Dark theme 🌙</label>
-              <!-- <label class="custom-control-label" for="customSwitch1" id="customSwitch1label">Switch tema Claro <fa-icon [icon]="['fas', 'sun']"></fa-icon></label> -->
-            </div>
+            <fa-icon [icon]="['far', themeStatusIcon]"></fa-icon> {{themeStatusLabel}}
           </button>
         </a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0"
-          (ngSubmit)="searchGame(searchInput.value)">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search games here" 
-             #searchInput>
+    <form [formGroup]="searchFormNavbar" class="form-inline my-2 my-lg-0"
+          (ngSubmit)="searchGame()">
+      <input class="form-control mr-sm-2 tooltip-navbar" type="text" placeholder="Search games here" id="searchNavBar" 
+             formControlName="searchTermNavbarField" autocomplete="off"
+             data-toggle="tooltip" data-placement="top" title="" data-original-title="What are you searching?">
       <button class="btn btn-secondary my-2 my-sm-0" type="button"
-              (click)="searchGame(searchInput.value)"><i class="fas fa-search"></i> Search
+              (click)="searchGame()"><i class="fas fa-search"></i> Search
       </button>
     </form>
   </div>
