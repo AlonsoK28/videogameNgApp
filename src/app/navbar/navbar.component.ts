@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { WordToSlugPipe } from "../pipes/word-to-slug.pipe";
+import { WordToSlugPipe } from '../pipes/word-to-slug.pipe';
 import { DOCUMENT } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 declare var $: any;
@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
   themeDarkLabel: string = 'Dark theme';
   themeClearIcon: string = 'sun';
   themeClearLabel: string = 'Clear theme';
+  themeChanging: boolean = false;
 
   constructor( @Inject(DOCUMENT) private _document, private router: Router ) { 
     this.searchFormNavbar = new FormGroup({
@@ -54,19 +55,25 @@ export class NavbarComponent implements OnInit {
   * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
   */
   switchTheme(){
-    const $theme = this._document.getElementById("theme");
-    const url = "assets/bootstrap";
+    const $theme = this._document.getElementById('theme');
+    const url = 'assets/bootstrap';
+    this.themeChanging = true;
+
     if(!this.themeStatus){
       this.themeStatusIcon = this.themeClearIcon;
       this.themeStatusLabel = this.themeClearLabel;
       this.themeStatus = true;
-      $theme.setAttribute("href", `${url}/clear-bootstrap.min.css`);
+      $theme.setAttribute('href', `${url}/clear-bootstrap.min.css`);
     }else{
       this.themeStatusIcon = this.themeDarkIcon;
       this.themeStatusLabel = this.themeDarkLabel;
       this.themeStatus = false;
-      $theme.setAttribute("href", `${url}/dark-bootstrap.min.css`);
+      $theme.setAttribute('href', `${url}/dark-bootstrap.min.css`);
     }
+
+    setTimeout(()=>{
+      this.themeChanging = false;
+    }, 1500);
   }
 
 }

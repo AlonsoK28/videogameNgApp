@@ -29,7 +29,8 @@
       </li>
       <li class="nav-item">
         <a class="nav link" (click)="switchTheme()">
-          <button type="button" class="btn btn-secondary">
+          <button type="button" class="btn btn-secondary"
+                  [disabled]="themeChanging">
             <fa-icon [icon]="['far', themeStatusIcon]"></fa-icon> {{themeStatusLabel}}
           </button>
         </a>
