@@ -4,16 +4,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { GameAPI, GameDetailAPI } from '../models/games';
 import { tap, map, retry, catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameRestApiService {
 
-  apiPROTOCOL = 'https://';
-  apiHOST = 'api.rawg.io/api';
-  apiPORT = "8888";
-  apiURL = `${this.apiPROTOCOL}${this.apiHOST}`;
+  apiURL = `${environment.apiPROTOCOL}${environment.apiHOST}`;
   httpE: httpError;
   constructor(private http: HttpClient) {
   }
