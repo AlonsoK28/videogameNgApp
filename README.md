@@ -1,5 +1,6 @@
 # videogameNgApp
 
+## [See app working in Heroku now](https://c-alonso-c-ortega-ngapp.herokuapp.com/game-detail/metal-gear-solid-3-snake-eater)
 ### This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.
 ### This app allows to browser into RAWG Video Games Database API (v1.0) 
 
