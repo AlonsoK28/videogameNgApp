@@ -4,6 +4,8 @@
 ### This app allows to browser into RAWG Video Games Database API (v1.0) 
 
 # change log
+
+#### 1.2.2-release Minor improvements for endpoint into enviroment.ts
 #### 1.2.1-release Minor improvements for switch theme button 
 #### 1.2-release Improved switch theme button and added ngForm to search fields 
 #### 1.1-release Fix back to top button
