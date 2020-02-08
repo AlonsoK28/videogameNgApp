@@ -6,7 +6,10 @@ export const environment = {
   production: false,
   apiPROTOCOL: 'https://',
   apiHOST: 'api.rawg.io/api',
-  apiPORT: "8888"
+  apiPORT: "8888",
+  get apiURL() {
+    return `${this.apiPROTOCOL}${this.apiHOST}`;
+  }
 };
 
 /*

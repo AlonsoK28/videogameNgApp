@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 })
 export class GameRestApiService {
 
-  apiURL = `${environment.apiPROTOCOL}${environment.apiHOST}`;
+  apiURL = environment.apiURL;
   httpE: httpError;
   constructor(private http: HttpClient) {
   }
