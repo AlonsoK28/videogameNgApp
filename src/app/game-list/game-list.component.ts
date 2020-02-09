@@ -16,20 +16,22 @@ export class GameListComponent implements OnInit {
   httpErrorMessage: string;
   query:string;
   Games:GameAPI[] = [];
-  platformSelected:string;
+  GamesFromLocalStorage: GameAPI[] = [];
+  platformSelected: string;
   
   constructor(private gameRestApi: GameRestApiService) { }
 
   ngOnInit() {
     this.gameList();
   }
+
   /**
    * Get a list of Games by Platform.
    * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
    * @http https://api.rawg.io/docs/#tag/games
    * @return [Games]
    */
-  gameList(platform?:string) {
+  gameList(platform?: string) {
     this.loader = true;
     this.noResults = false;
     this.results = false;
@@ -37,10 +39,14 @@ export class GameListComponent implements OnInit {
     if (platform){
       this.query = `&search=${platform}`;
       this.platformSelected = platform;
+    } else {
+      if (this.getGameListFromLocalStorage()) {
+        return;
+      }
     }
     return this.gameRestApi.getGameList(this.query).subscribe(
       //next
-      data => {
+      data => {        
         this.Games = data;
         if (!data.length) {
           this.noResults = true;
@@ -48,6 +54,7 @@ export class GameListComponent implements OnInit {
           this.results = true;
         }
         this.loader = false;
+        this.saveGameListToLocalStorage();
       },
       //error
       (err: httpError) => {
@@ -60,6 +67,24 @@ export class GameListComponent implements OnInit {
         console.info("Data correctly recieved by Observer ✔️");
       }
     );
+  }
+
+  saveGameListToLocalStorage() {
+    localStorage.setItem('GameListDefault', JSON.stringify(this.Games));
+  }
+
+  getGameListFromLocalStorage() {
+    this.GamesFromLocalStorage = JSON.parse(localStorage.getItem('GameListDefault'));
+    if (this.GamesFromLocalStorage) {
+      console.log('There are already saved games for list in Local Storage 💹');
+      this.Games = this.GamesFromLocalStorage;
+      this.results = true;
+      this.loader = false;
+      return true;
+    } else {
+      console.log('No data in local storage was found ❌');
+      return false;
+    }
   }
 
 }

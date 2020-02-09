@@ -4,7 +4,7 @@
         <div class="card-columns">
             <a *ngFor="let game of Games;" routerLink="/game-detail/{{ game.slug }}" class="fade-in">    
                 <div class="card border-success">
-                    <img *ngIf="game.background_image" class="card-img" [defaultImage]="defaultImage" [lazyLoad]="game.background_image">
+                    <img *ngIf="game.background_image" class="card-img" [defaultImage]="defaultImage" [lazyLoad]="game.background_image" offset="75">
                     <img *ngIf="!game.background_image" class="card-img" src="{{noImage}}">
                     <div *ngIf="game.platforms;" class="card-img-overlay d-flex justify-content-end pr-2 pt-2">
                         <div *ngFor="let platform of game.platforms; let i = index; odd as isOdd;">
