@@ -5,11 +5,11 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
 import { GameListComponent } from './game-list/game-list.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/game-list", pathMatch: "full"},
-  { path: "game-detail/:slug", component: GameDetailComponent },
-  { path: "game-list", component: GameListComponent },
-  { path: "game-search", component: GameSearchComponent },
-  { path: "game-search/:searchTerm", component: GameSearchComponent },
+  { path: "game-detail/:slug", component: GameDetailComponent, data: { animation: 'GameDetail' } },
+  { path: "game-list", component: GameListComponent, data: { animation: 'GameList' } },
+  { path: "game-search", component: GameSearchComponent, data: { animation: 'GameSearch' } },
+  { path: "game-search/:searchTerm", component: GameSearchComponent, data: { animation: 'null' } },
+  { path: "**", redirectTo: "/game-list", pathMatch: "full"},
 ];
 
 @NgModule({
