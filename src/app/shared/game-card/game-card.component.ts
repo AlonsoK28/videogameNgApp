@@ -9,8 +9,8 @@ import { GameAPI } from 'src/app/models/games';
 export class GameCardComponent implements OnInit {
 
   @Input("games-param") Games: GameAPI;
-  defaultImage: string = "assets/image/placeholder.png";
-  noImage: string = "assets/image/no-image.png";
+  defaultImage: string = "assets/image/placeholder.gif";
+  noImage: string = "assets/image/no-image.gif";
 
   constructor() {
    }
