@@ -6,6 +6,7 @@
 
 # change log
 
+#### 1.4.1-release Improvements into ngModule and dependencies
 #### 1.4-release Added splash animation
 #### 1.3-release Angular animations for Router navigation, also updated placeholder lazy load images
 #### 1.2.2-release Minor improvements for endpoint into enviroment.ts
