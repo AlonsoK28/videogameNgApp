@@ -5,23 +5,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-//components
+//modules
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { GameSearchComponent } from './game-search/game-search.component';
-import { GameDetailComponent } from './game-detail/game-detail.component';
-import { GameListComponent } from './game-list/game-list.component';
-
-//shared
 import { SharedModule } from './shared/shared.module';
-
-//pipes
 import { PipesModule } from './pipes/pipes.module';
 
 //3-party modules
 import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 import { LightboxModule } from 'ngx-lightbox';
 import { RatingModule } from 'ng-starrating';
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+//components
+import { GameSearchComponent } from './game-search/game-search.component';
+import { GameDetailComponent } from './game-detail/game-detail.component';
+import { GameListComponent } from './game-list/game-list.component';
+
 
 @NgModule({
   declarations: [
