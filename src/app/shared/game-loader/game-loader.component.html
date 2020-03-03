@@ -1,12 +1,12 @@
 <!-- informacion -->
 <div class="container mt-3" *ngIf="loader">
     <div class="row">
-        <div class="col-md-12 text-center fade-in fast pl-1 pr-1">
+        <div class="col-md-12 text-center fade-in fast">
             <div class="card border-success mb-3">
                 <div class="card-body">
-                    <h4 class="card-title">Retriving data</h4>
+                    <h4 class="card-title">Obteniendo datos</h4>
                     <div class="fa-5x">
-                        <fa-icon [icon]="['fas', 'circle-notch']" [spin]="true"></fa-icon>
+                        <fa-icon [icon]="icons.faCircleNotch" [spin]="true"></fa-icon>
                     </div>
                 </div>
             </div>
@@ -14,14 +14,14 @@
     </div>
 </div>
 <!-- sin resultados -->
-<div class="container mt-3" *ngIf="noResults">
+<div class="container mt-3" *ngIf="sinResultados">
     <div class="row">
-        <div class="col-md-12 text-center fade-in fast pl-1 pr-1">
+        <div class="col-md-12 text-center fade-in fast">
             <div class="card border-warning mb-3">
                 <div class="card-body">
-                    <h3 class="mensaje"> No results found </h3>
+                    <h3 class="mensaje"> No se encontraron resultados </h3>
                     <div class="fa-5x">
-                        <fa-icon [icon]="['fas', 'poll']"></fa-icon>
+                        <fa-icon [icon]="icons.faPoll"></fa-icon>
                     </div>
                 </div>
             </div>
@@ -34,11 +34,11 @@
         <div *ngSwitchCase="404">
             <div class="container mt-3">
                 <div class="row">
-                    <div class="col-md-12 text-center fade-in fast pl-1 pr-1">
+                    <div class="col-md-12 text-center fade-in fast">
                         <div class="card border-danger mb-3">
                             <div class="card-body">
                                 <div class="fa-5x">
-                                    <fa-icon [icon]="['fas', 'star-half-alt']"></fa-icon>
+                                    <fa-icon [icon]="icons.faStarHalfAlt"></fa-icon>
                                 </div>
                                 <h4 class="card-title">{{ httpErrorMessage }}</h4>
                             </div>
@@ -50,11 +50,11 @@
         <div *ngSwitchCase="0">
             <div class="container mt-3">
                 <div class="row">
-                    <div class="col-md-12 text-center fade-in fast pl-1 pr-1">
+                    <div class="col-md-12 text-center fade-in fast">
                         <div class="card border-danger mb-3">
                             <div class="card-body">
                                 <div class="fa-5x">
-                                    <fa-icon [icon]="['fas', 'exclamation-triangle']"></fa-icon>
+                                    <fa-icon [icon]="icons.faStarHalfAlt"></fa-icon>
                                 </div>
                                 <h4 class="card-title">{{ httpErrorMessage }}</h4>
                             </div>
@@ -66,11 +66,11 @@
         <div *ngSwitchCase="500">
             <div class="container mt-3">
                 <div class="row">
-                    <div class="col-md-12 text-center fade-in fast pl-1 pr-1">
+                    <div class="col-md-12 text-center fade-in fast">
                         <div class="card border-danger mb-3">
                             <div class="card-body">
                                 <div class="fa-5x">
-                                    <fa-icon [icon]="['fas', 'exclamation-triangle']"></fa-icon>
+                                    <fa-icon [icon]="icons.faExclamationTriangle"></fa-icon>
                                 </div>
                                 <h4 class="card-title">{{ httpErrorMessage }}</h4>
                             </div>

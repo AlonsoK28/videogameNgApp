@@ -1,150 +1,149 @@
+import {
+    faAngular, faYoutube, faXbox, faPlaystation, faJsSquare, faNodeJs, faCss3Alt, faSteam, faHtml5,
+    faApple, faAppStoreIos, faAndroid, faGooglePlay, faChrome, faBootstrap, faFontAwesome
+} from '@fortawesome/free-brands-svg-icons'; //fab
+
+import {
+    faCircleNotch,
+    faPoll, faExclamationTriangle, faAsterisk, faPlusCircle, faSearch,
+    faTimes, faCheckCircle, faArrowCircleLeft, faArrowAltCircleLeft, faInfoCircle, faBackspace,
+    faFont, faPaperclip, faShoppingBasket, faStarHalfAlt, faExternalLinkAlt, faCalendarAlt,
+    faGrinTongueWink, faImage, faUser, faGamepad, faHeart, faShoppingCart, faDice, faLaptop,
+    faChevronCircleUp, faTrophy, faDatabase
+} from '@fortawesome/free-solid-svg-icons'; //fas
+
 /**
 * Define Store prefix and nameIcon for display Fontawesome Icon
 * @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
 */
 
-export const storeLogo = {
+export const logos = {
         "playstation-store":{
-            "logo": "playstation",
+            "logo": faPlaystation,
             "prefix": "fab"
         },
         "xbox-store":{
-            "logo": "xbox",
+            "logo": faXbox,
             "prefix": "fab"
         },
         "xbox360":{
-            "logo": "xbox",
+            "logo": faXbox,
             "prefix": "fab"
         },
         "steam":{
-            "logo": "steam",
+            "logo": faSteam,
             "prefix": "fab"
         },
         "apple-appstore":{
-            "logo": "app-store-ios",
+            "logo": faAppStoreIos,
             "prefix": "fab"
         },
         "google-play":{
-            "logo": "google-play",
+            "logo": faGooglePlay,
             "prefix": "fab"
         },
-        other:{
-            "logo": "dice",
+        other: {
+            "logo": faDice,
             "prefix": "fas"
-        }
-};
-
-/**
-* Define platform prefix and nameIcon for display Fontawesome Icon
-* @autor Carlos Alonso Casales Ortega <calonso011@yahoo.com.mx>
-*/
-export const platformLogo = {
+        },
         "playstation":{
-            "logo": "playstation",
+            "logo": faPlaystation,
             "prefix": "fab"
         },
         "playstation2":{
-            "logo": "playstation",
+            "logo": faPlaystation,
             "prefix": "fab"
         },
         "playstation3":{
-            "logo": "playstation",
+            "logo": faPlaystation,
             "prefix": "fab"
         },
         "playstation4":{
-            "logo": "playstation",
+            "logo": faPlaystation,
             "prefix": "fab"
         },
         "playstation5":{
-            "logo": "playstation",
+            "logo": faPlaystation,
             "prefix": "fab"
         },
         "psp":{
-            "logo": "playstation",
+            "logo": faPlaystation,
             "prefix": "fab"
         },
         "ps-vita":{
-            "logo": "playstation",
+            "logo": faPlaystation,
             "prefix": "fab"
         },
         "xbox-old":{
-            "logo": "xbox",
-            "prefix": "fab"
-        },
-        "xbox360":{
-            "logo": "xbox",
+            "logo": faXbox,
             "prefix": "fab"
         },
         "xbox-one":{
-            "logo": "xbox",
+            "logo": faXbox,
             "prefix": "fab"
         },
         "pc":{
-            "logo": "laptop",
+            "logo": faLaptop,
             "prefix": "fas"
         },
         "linux":{
-            "logo": "laptop",
+            "logo": faLaptop,
             "prefix": "fas"
         },
         "ios":{
-            "logo": "apple",
+            "logo": faApple,
             "prefix": "fab"
         },
         "macos":{
-            "logo": "apple",
+            "logo": faApple,
             "prefix": "fab"
         },
         "android":{
-            "logo": "android",
+            "logo": faAndroid,
             "prefix": "fab"
         },
         "web":{
-            "logo": "chrome",
+            "logo": faChrome,
             "prefix": "fab"
         },
         "nintendo":{
-            "logo": "gamepad",
+            "logo": faGamepad,
             "prefix": "fas"
         },
         "wii":{
-            "logo": "gamepad",
+            "logo": faGamepad,
             "prefix": "fas"
         },
         "wii-u":{
-            "logo": "gamepad",
+            "logo": faGamepad,
             "prefix": "fas"
         },
         "nintendo-3ds":{
-            "logo": "gamepad",
+            "logo": faGamepad,
             "prefix": "fas"
         },
         "nintendo-ds":{
-            "logo": "gamepad",
+            "logo": faGamepad,
             "prefix": "fas"
         },
         "nintendo-switch":{
-            "logo": "gamepad",
+            "logo": faGamepad,
             "prefix": "fas"
         },
         "nes":{
-            "logo": "gamepad",
+            "logo": faGamepad,
             "prefix": "fas"
         },
         "gamecube":{
-            "logo": "gamepad",
+            "logo": faGamepad,
             "prefix": "fas"
         },
         "nintendo-64":{
-            "logo": "gamepad",
+            "logo": faGamepad,
             "prefix": "fas"
         },
         "game-boy-advance":{
-            "logo": "gamepad",
-            "prefix": "fas"
-        },
-        other:{
-            "logo": "dice",
+            "logo": faGamepad,
             "prefix": "fas"
         }
 };

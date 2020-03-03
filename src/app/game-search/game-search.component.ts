@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { GameRestApiService } from '../services/game-rest-api.service';
 import { httpError } from '../models/httpError';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+//fontawesome
+import { faBackspace, faSearch } from '@fortawesome/free-solid-svg-icons'; //fas
 declare var $: any;
 
 @Component({
@@ -13,6 +15,10 @@ declare var $: any;
 })
 export class GameSearchComponent implements OnInit {
 
+  icons = {
+    faBackspace: faBackspace,
+    faSearch: faSearch
+  }
   Games: GameAPI[] = [];
   searchTerm:string;
   searchTemplate:boolean = true;  

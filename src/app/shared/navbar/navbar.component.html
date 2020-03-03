@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
       <h4>
-          <fa-icon [icon]="['fab', 'angular']"></fa-icon> ng-app
+          <fa-icon [icon]="icons.faAngular"></fa-icon> ng-app
       </h4>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
@@ -15,7 +15,7 @@
         <a class="nav-link" 
            routerLink="/game-list">
             <h4>
-                <fa-icon [icon]="['fas', 'trophy']"></fa-icon> Top Games
+                <fa-icon [icon]="icons.faTrophy"></fa-icon> Top Games
             </h4>
         </a>
       </li>
@@ -23,7 +23,7 @@
         <a class="nav-link" 
            routerLink="/game-search">
             <h4>
-              <fa-icon [icon]="['fas', 'search']"></fa-icon> <strong> Search Game</strong>
+              <fa-icon [icon]="icons.faSearch"></fa-icon> <strong> Search Game</strong>
             </h4>
         </a>
       </li>
@@ -31,7 +31,7 @@
         <a class="nav link" (click)="switchTheme()">
           <button type="button" class="btn btn-secondary"
                   [disabled]="themeChanging">
-            <fa-icon [icon]="['far', themeStatusIcon]"></fa-icon> {{themeStatusLabel}}
+            <fa-icon [icon]="themeStatusIcon"></fa-icon> {{themeStatusLabel}}
           </button>
         </a>
       </li>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faChevronUp} from '@fortawesome/free-solid-svg-icons'; //fas
 
 @Component({
   selector: 'app-back-to-top',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BackToTopComponent implements OnInit {
 
+  icons = {
+    faChevronUp: faChevronUp
+  }
   constructor() { }
 
   ngOnInit() {

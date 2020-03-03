@@ -7,58 +7,28 @@ import { AppComponent } from './app.component';
 
 //components
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NavbarComponent } from './navbar/navbar.component';
-import { LoaderComponent } from './loader/loader.component';
-import { FooterComponent } from './footer/footer.component';
 import { GameSearchComponent } from './game-search/game-search.component';
-import { GameCardComponent } from './shared/game-card/game-card.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
-import { GameLoaderComponent } from './game-loader/game-loader.component';
 import { GameListComponent } from './game-list/game-list.component';
-import { BackToTopComponent } from './shared/back-to-top/back-to-top.component';
+
+//shared
+import { SharedModule } from './shared/shared.module';
 
 //pipes
-import { WordToSlugPipe } from './pipes/word-to-slug.pipe';
-import { SlugToWordPipe } from './pipes/slug-to-word.pipe';
-import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
-import { IconGeneratorPipe } from './pipes/icon-generator.pipe';
-import { DomSanitizerPipe } from './pipes/dom-sanitizer.pipe';
-import { RatingColorPipe } from './pipes/rating-color.pipe';
+import { PipesModule } from './pipes/pipes.module';
 
-//vendor
+//3-party modules
 import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
-import { RatingModule } from 'ng-starrating';
 import { LightboxModule } from 'ngx-lightbox';
+import { RatingModule } from 'ng-starrating';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import {  faCircleNotch, 
-          faPoll,faExclamationTriangle,faAsterisk,faPlusCircle,faSearch, 
-          faTimes, faCheckCircle, faArrowCircleLeft, faArrowAltCircleLeft,faInfoCircle, faBackspace, 
-          faFont, faPaperclip,faShoppingBasket,faStarHalfAlt,faExternalLinkAlt,faCalendarAlt,
-          faGrinTongueWink,faImage,faUser, faGamepad, faHeart, faShoppingCart,faDice,faLaptop,
-          faChevronCircleUp, faTrophy, faDatabase
-        } from '@fortawesome/free-solid-svg-icons'; //fas
-import {  faAngular,faYoutube,faXbox,faPlaystation,faJsSquare,faNodeJs,faCss3Alt,faSteam, faHtml5,
-          faApple,faAppStoreIos,faAndroid,faGooglePlay,faChrome, faBootstrap, faFontAwesome
-        } from '@fortawesome/free-brands-svg-icons'; //fab
-import { faSun, faMoon } from '@fortawesome/free-regular-svg-icons'; //far
+
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    LoaderComponent,
-    FooterComponent,
-    WordToSlugPipe,
-    SlugToWordPipe,
     GameSearchComponent,
-    GameCardComponent,
     GameDetailComponent,
-    GameLoaderComponent,
-    HtmlToTextPipe,
-    DomSanitizerPipe,
-    IconGeneratorPipe,
-    RatingColorPipe,
     GameListComponent,
-    BackToTopComponent
   ],
   imports: [
     BrowserModule,
@@ -71,21 +41,12 @@ import { faSun, faMoon } from '@fortawesome/free-regular-svg-icons'; //far
     LazyLoadImageModule.forRoot({
       preset: scrollPreset
     }),
-    RatingModule,
-    LightboxModule
+    LightboxModule,
+    SharedModule,
+    PipesModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  constructor(library: FaIconLibrary) {
-    library.addIcons( faAngular, 
-      faCircleNotch, faPoll, faExclamationTriangle, faAsterisk, faPlusCircle, faSearch, faTimes, 
-      faArrowCircleLeft, faInfoCircle, faBackspace, faCheckCircle, faFont,
-      faPaperclip,faShoppingBasket,faStarHalfAlt,faExternalLinkAlt,faCalendarAlt,faGrinTongueWink,
-      faYoutube,faImage,faUser,faGamepad,faHeart,faShoppingCart,faXbox,faPlaystation,faJsSquare,
-      faNodeJs,faCss3Alt,faArrowAltCircleLeft,faSteam,faDice,faHtml5,faLaptop,faApple,faAppStoreIos,
-      faAndroid, faGooglePlay, faChrome, faBootstrap, faChevronCircleUp, faTrophy, faFontAwesome, faDatabase,
-      faSun, faMoon );  
-  }
-}
+export class AppModule { }

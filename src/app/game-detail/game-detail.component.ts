@@ -4,6 +4,14 @@ import { httpError } from '../models/httpError';
 import { GameRestApiService } from '../services/game-rest-api.service';
 import { Lightbox } from 'ngx-lightbox';
 import { Location } from '@angular/common';
+import { GameAPI } from 'src/app/models/games';
+
+//fontawesome
+import {
+  faGrinTongueWink, faCalendarAlt, faShoppingCart, faGamepad, faExternalLinkAlt,
+  faUser, faInfoCircle, faArrowAltCircleLeft, faImage
+} from '@fortawesome/free-solid-svg-icons'; //fas
+import { faYoutube } from '@fortawesome/free-brands-svg-icons'; //fab
 
 @Component({
   selector: 'app-game-detail',
@@ -12,7 +20,19 @@ import { Location } from '@angular/common';
 })
 export class GameDetailComponent implements OnInit {
 
-  Game;
+  icons = {
+    faGrinTongueWink: faGrinTongueWink,
+    faCalendarAlt: faCalendarAlt,
+    faShoppingCart: faShoppingCart,
+    faGamepad: faGamepad,
+    faExternalLinkAlt: faExternalLinkAlt,
+    faYoutube: faYoutube,
+    faUser: faUser,
+    faInfoCircle: faInfoCircle,
+    faArrowAltCircleLeft: faArrowAltCircleLeft,
+    faImage: faImage
+  }
+  Game: GameAPI;
   slug: string = "";
   defaultImage: string = "assets/image/placeholder.png";
   noImage: string = "assets/image/no-image.png";

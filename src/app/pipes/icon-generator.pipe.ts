@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { platformLogo as platform, storeLogo as store } from '../models/logos';
+import { logos } from '../models/logos';
 
 /**
 * Define platform prefix and nameIcon for display Fontawesome Icon
@@ -10,24 +10,12 @@ import { platformLogo as platform, storeLogo as store } from '../models/logos';
 })
 export class IconGeneratorPipe implements PipeTransform {
 
-  transform(iconName:string, type:string, gallery:string): string {
+  transform(name:string):any {
     // search for icon logo or icon prefix by associative value
-    let logo;
-    switch(gallery){
-      case 'platform':
-        logo = platform;
-      break;
-      case 'store':
-        logo = store;
-        break;
-      default: 
-        logo = store;
-      break;
-    }
-    if (logo[iconName]) {
-      return logo[iconName][type];
+    if (logos[name]) {
+      return logos[name]['logo'];
     } else {
-      return logo.other[type];
+      return logos.other['logo'];
     }
   }
 

@@ -23,14 +23,14 @@
     <!-- Boostrap detail https://bootsnipp.com/snippets/orOGB -->
     <div class="container mt-4 mb-4 pl-0 pr-0">
         <button type="button" class="btn btn-primary mb-4" (click)="goBack()">
-            <fa-icon [icon]="['fas', 'arrow-alt-circle-left']"></fa-icon> Back
+            <fa-icon [icon]="icons.faArrowAltCircleLeft"></fa-icon> Back
         </button>
         <div class="card fade-in">
             <div class="row">
                 <aside class="col-sm-5 border-right pl-1">
                     <article class="gallery-wrap">
                         <div class="img-big-wrap mt-3">
-                            <p class="text-center">Image <fa-icon [icon]="['fas', 'image']"></fa-icon>
+                            <p class="text-center">Image <fa-icon [icon]="icons.faImage"></fa-icon>
                             </p>
                             <img *ngIf="Game.background_image else noImageExist" [src]="Game.background_image"
                                 (click)="open(i)" [defaultImage]="defaultImage" [lazyLoad]="Game.background_image"
@@ -45,7 +45,7 @@
                                 class="img-fluid item-gallery mx-auto d-block pl-4 pr-2 pt-4 hand-cursor">
                         </div>
                         <div *ngIf="Game.clip" class="img-small-wrap pl-4 pr-2 pt-3 hand-cursor">
-                            <p class="text-center">Videoclip <fa-icon [icon]="['fab', 'youtube']"></fa-icon></p>
+                            <p class="text-center">Videoclip <fa-icon [icon]="icons.faYoutube"></fa-icon></p>
                                 <video controls loop allowfullscreen class="embed-responsive embed-responsive-16by9">
                                     <source src="{{Game.clip.clip}}" type="video/mp4" class="embed-responsive-item">
                                 </video>
@@ -59,21 +59,23 @@
                         <p class="price-detail-wrap">
                             <span class="price h3 text-warning align-middle d-none d-sm-block">
                                 <span *ngFor="let platform of Game.platforms; let i = index; last as isLast;"
-                                    class="currency">{{platform.platform.name}}<fa-icon
-                                        [icon]="[platform.platform.slug | iconGenerator:'prefix':'platform', platform.platform.slug | iconGenerator:'logo':'platform']"
+                                    class="currency">{{platform.platform.name}}
+                                    <fa-icon
+                                        [icon]="platform.platform.slug | iconGenerator"
                                         class="fa-xs align-middle ml-2 mr-2"></fa-icon></span>
-                                        <span *ngIf="Game.esrb_rating" class="pl-1 h6 align-middle"><span class="badge badge-dark">{{Game.esrb_rating.name}} <fa-icon [icon]="['fas', 'user']"></fa-icon></span></span>
+                                        <span *ngIf="Game.esrb_rating" class="pl-1 h6 align-middle"><span class="badge badge-dark">{{Game.esrb_rating.name}} <fa-icon [icon]="icons.faUser"></fa-icon></span></span>
                             </span>
                             <span class="price h4 text-warning align-middle d-sm-none">
                                 <span *ngFor="let platform of Game.platforms; let i = index; last as isLast;"
-                                    class="currency">{{platform.platform.name}}<fa-icon
-                                        [icon]="[platform.platform.slug | iconGenerator:'prefix':'platform', platform.platform.slug | iconGenerator:'logo':'platform']"
+                                    class="currency">{{platform.platform.name}}
+                                    <fa-icon
+                                        [icon]="platform.platform.slug | iconGenerator"
                                         class="fa-xs align-middle ml-2 mr-2"></fa-icon></span>
-                                        <span *ngIf="Game.esrb_rating" class="pl-1 h6 align-middle"><span class="badge badge-dark">{{Game.esrb_rating.name}}<fa-icon [icon]="['fas', 'user']"></fa-icon></span></span>
+                                        <span *ngIf="Game.esrb_rating" class="pl-1 h6 align-middle"><span class="badge badge-dark">{{Game.esrb_rating.name}}<fa-icon [icon]="icons.faUser"></fa-icon></span></span>
                             </span>
                         </p>
                         <dl *ngIf="Game.ratings[0]">
-                            <h4>Reactions <fa-icon [icon]="['fas', 'grin-tongue-wink']"></fa-icon>
+                            <h4>Reactions <fa-icon [icon]="icons.faGrinTongueWink"></fa-icon>
                             </h4>
                             <dd>
                                 <button *ngFor="let rating of Game.ratings; odd as isOdd;" type="button" [ngClass]="{'mr-1 ml-1' : isOdd}" class="btn btn-{{rating.title | ratingColor}} mb-1" data-toggle="tooltip" data-placement="top" title="" [attr.data-original-title]="rating.count + ' users vote this reaction'" onmouseenter="$(this).tooltip('show')">{{rating.title | titlecase}} <span class="badge badge-light badge-pill">{{rating.percent | number:'1.0-0'}}%</span></button>
@@ -87,14 +89,14 @@
                                         <star-rating value="{{Game.rating}}" totalstars="5" checkedcolor="yellow"
                                             uncheckedcolor="gray" size="24px" readonly="true"></star-rating>
                                     </span>
-                                    <span *ngIf="Game.released">Released <fa-icon [icon]="['fas', 'calendar-alt']">
+                                    <span *ngIf="Game.released">Released <fa-icon [icon]="icons.faCalendarAlt">
                                         </fa-icon> {{Game.released}}</span>
                                 </div>
                             </dd>
                         </dl>
                         <dl *ngIf="Game.description_raw">
                             <hr class="bg-white">
-                            <h4>Description <fa-icon [icon]="['fas', 'info-circle']"></fa-icon>
+                            <h4>Description <fa-icon [icon]="icons.faInfoCircle"></fa-icon>
                             </h4>
                             <dd>
                                 <section class="description-elipsis">{{Game.description_raw | htmlToText}}</section>
@@ -102,21 +104,21 @@
                             <hr class="bg-white">
                         </dl>
                         <dl *ngIf="Game.stores[0]">
-                            <h4>Buy now <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+                            <h4>Buy now <fa-icon [icon]="icons.faShoppingCart"></fa-icon>
                             </h4>
                             <a *ngFor="let store of Game.stores" href="{{store.url}}" target="_blank"><button type="button"
                                     class="btn btn-danger mr-1 mb-2">{{store.store.name}} <fa-icon
-                                        [icon]="[store.store.slug | iconGenerator:'prefix':'store', store.store.slug | iconGenerator:'logo':'store']">
+                                        [icon]="store.store.slug | iconGenerator">
                                     </fa-icon></button></a>
                         </dl>
                         <dl *ngIf="Game.genres[0]">
-                            <h4>Genres <fa-icon [icon]="['fas', 'gamepad']"></fa-icon>
+                            <h4>Genres <fa-icon [icon]="icons.faGamepad"></fa-icon>
                             </h4>
                             <button *ngFor="let genre of Game.genres" type="button"
                                 class="btn btn-outline-warning mr-1">{{genre.name}}</button>
                         </dl>
                         <dl *ngIf="Game.website" class="param param-feature">
-                            <h4>Website <fa-icon [icon]="['fas', 'external-link-alt']"></fa-icon>
+                            <h4>Website <fa-icon [icon]="icons.faExternalLinkAlt"></fa-icon>
                             </h4>
                             <dd>
                                 <h6 class="text-truncate">

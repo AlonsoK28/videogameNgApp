@@ -14,13 +14,13 @@
                                 data-toggle="tooltip" data-placement="top" title="" data-original-title="What are you searching?">
                         <div *ngIf="searchTermFieldControl.value"  class="input-group-append hand-cursor"
                              (click)="emptySearchTerm()">
-                            <span class="input-group-text"><fa-icon [icon]="['fas', 'backspace']"></fa-icon></span>
+                            <span class="input-group-text"><fa-icon [icon]="icons.faBackspace"></fa-icon></span>
                         </div>
                         <div class="input-group-append hand-cursor" (click)="searchGame()">
                             <span class="input-group-text">
                                 Search
                                 <span class="icon-search ml-1">
-                                    <fa-icon [icon]="['fas', 'search']"></fa-icon>
+                                    <fa-icon [icon]="icons.faSearch"></fa-icon>
                                 </span>
                             </span>
                         </div>
@@ -37,7 +37,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Search for games here</h4>
                     <div class="fa-5x">
-                        <fa-icon [icon]="['fas', 'search']"></fa-icon>
+                        <fa-icon [icon]="icons.faSearch"></fa-icon>
                     </div>
                 </div>
             </div>

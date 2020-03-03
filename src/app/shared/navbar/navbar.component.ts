@@ -1,8 +1,10 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { WordToSlugPipe } from '../pipes/word-to-slug.pipe';
+import { WordToSlugPipe } from '../../pipes/word-to-slug.pipe';
 import { DOCUMENT } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { faSearch, faTrophy, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'; //fas
+import { faAngular } from '@fortawesome/free-brands-svg-icons'; //fab
 declare var $: any;
 
 @Component({
@@ -11,14 +13,22 @@ declare var $: any;
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+  icons = {
+    faTrophy: faTrophy,
+    faSearch: faSearch,
+    faAngular: faAngular,
+    faMoon: faMoon,
+    faSun: faSun
+  }
   searchFormNavbar: FormGroup;
   searchTermFieldNavbarControl: any;
   themeStatusLabel:string;
   themeStatus:boolean;
   themeStatusIcon:string;
-  themeDarkIcon: string = 'moon';
+  themeDarkIcon: any = this.icons.faMoon;
   themeDarkLabel: string = 'Dark theme';
-  themeClearIcon: string = 'sun';
+  themeClearIcon: any = this.icons.faSun;
   themeClearLabel: string = 'Clear theme';
   themeChanging: boolean = false;
 

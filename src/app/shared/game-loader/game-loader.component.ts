@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+//fontawesome
+import { faCircleNotch, faPoll, faStarHalfAlt, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'; //fas
 
 @Component({
   selector: 'app-game-loader',
@@ -7,6 +9,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class GameLoaderComponent implements OnInit {
 
+  icons = {
+    faCircleNotch: faCircleNotch,
+    faPoll: faPoll,
+    faExclamationTriangle: faExclamationTriangle,
+    faStarHalfAlt: faStarHalfAlt
+  }
   @Input("loader-param") loader: boolean;
   @Input("noResults-param") noResults: boolean;
   @Input("httpErrorCode-param") httpErrorCode: number;
